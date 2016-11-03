@@ -61,29 +61,9 @@
 					<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-										<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-										Celulares
-									</a>
-								</h4>
-							</div>
-							<div id="sportswear" class="panel-collapse collapse">
-								<div class="panel-body">
-									<ul>
-										<li><a href="#">Samsung</a></li>
-										<li><a href="#">LG</a></li>
-										<li><a href="#">Huwai</a></li>
-										<li><a href="#">Sony</a></li>
-										<li><a href="#">Motorola</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title"><a href="#">Computadoras</a></h4>
+								@foreach($categorias as $c)
+								<h4 class="panel-title"><a href="{{url('/articulosCategoria')}}/{{$c->id}}">{{$c->nombre}}</a></h4>
+								@endforeach
 							</div>
 						</div>
 
@@ -111,7 +91,7 @@
 								<div class="product-overlay">
 									<div class="overlay-content">
 										<h2>$56</h2>
-										<p>Galaxy S7</p>
+										<p>Moto X</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 								</div>

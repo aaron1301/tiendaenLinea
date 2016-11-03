@@ -54,7 +54,7 @@
 						</div>						
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="" class="active">Home</a></li>
+								<li><a href="{{url('inicio')}}" class="active">Home</a></li>
 								<li><a href="" class="active">Seccion1</a></li>
 								<li><a href="" class="active">Seccion2</a></li>																
 							</ul>
