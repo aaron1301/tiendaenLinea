@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('inicio','principalController@home');
 
 Route::get('articulosCategoria/{id}','articulosController@verArticulos');
+
+Route::get('articuloDetalle/{codigo}','articulosController@articuloDetalle');

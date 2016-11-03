@@ -1,4 +1,3 @@
-drop database tienda;
 create database tienda;
 use tienda;
 

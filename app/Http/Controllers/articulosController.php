@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Articulo;
 use App\Categoria;
+use DB;
 
 class articulosController extends Controller
 {
@@ -14,4 +15,9 @@ class articulosController extends Controller
     	$categorias = Categoria::all();
     	return view('articulosCategoria',compact('articulos','categorias'));
     }
+
+    public function articuloDetalle($codigo){
+   		$articulo=Articulo::where('codigo',$codigo)->get();
+    	return view('articuloDetalle', compact('articulo'));
+    } 
 }

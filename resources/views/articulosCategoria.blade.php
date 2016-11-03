@@ -29,7 +29,6 @@
 									<img src="" alt="" />
 									<h2>${{$a->precio}}</h2>
 									<p>{{$a->nombre}}</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Comprar</a>
 								</div>
 								<div class="product-overlay">
 									<div class="overlay-content">
@@ -38,7 +37,12 @@
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Comprar</a>
 									</div>
 								</div>
-							</div>						
+							</div>
+							<div class="choose">
+								<ul class="nav nav-pills nav-justified">
+									<li><a href="{{url('articuloDetalle')}}/{{$a->codigo}}"><i class="fa fa-plus-square"></i>Ver</a></li>
+								</ul>
+							</div>			
 						</div>
 					</div>
 				@endforeach				
