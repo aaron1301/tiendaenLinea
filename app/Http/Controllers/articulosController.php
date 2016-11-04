@@ -18,6 +18,7 @@ class articulosController extends Controller
 
     public function articuloDetalle($codigo){
    		$articulo=Articulo::where('codigo',$codigo)->get();
-    	return view('articuloDetalle', compact('articulo'));
+   		$categorias = Categoria::all();
+    	return view('articuloDetalle', compact('articulo','categorias'));
     } 
 }

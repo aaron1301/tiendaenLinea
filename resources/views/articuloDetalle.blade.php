@@ -1,49 +1,46 @@
 @extends('principal')
 
 @section ('contenido')
-
 <div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="blog-post-area">
-						<h2 class="title text-center">Caracteristicas del artículo</h2>
-						<div class="single-blog-post">
-							
-							@foreach($articulo as $a)
-							<h2 class="title text-center"> {{$a->codigo}}.- {{$a->nombre}}</h2>	
-
-
-							
-							
-							<!--/
-							<div class="post-meta">
-								<ul>
-									<li><i class="fa fa-user"></i> Mac Doe</li>
-									<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-									<li><i class="fa fa-calendar"></i> DEC 5, 2013</li>
-								</ul>
-								<span>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-half-o"></i>
-								</span>
-							</div>
-							-->
-							<a href="">
-								<img src="images/blog/blog-one.jpg" alt=""  class="title text-center">
-							</a>
-							<h3 class="title text-center">Precio: {{$a->precio}}</h3>
-							<h3 class="title text-center">Descipción: </h3>
-							<h4 class="title text-center">{{$a->descripcion}}</h4>
-							<h3 class="title text-center">Costo: {{$a->costo}}</h3>
-
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="left-sidebar">
+				<h2>Categorias</h2>
+				<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							@foreach($categorias as $c)
+							<h4 class="panel-title"><a href="{{url('/articulosCategoria')}}/{{$c->id}}">{{$c->nombre}}</a></h4>
 							@endforeach
 						</div>
-					</div><!--/blog-post-area-->					
-				</div>	
+					</div>
+				</div><!--/category-products-->
 			</div>
 		</div>
+		
+		<div class="product-details"><!--product-details-->
+						@foreach($articulo as $a)
+						<div class="col-sm-5">
+							<div class="view-product">
+								<img src="images/product-details/1.jpg" alt="" />
+							</div>
+						</div>
+						<div class="col-sm-7">
+							<div class="product-information"><!--/product-information-->
+								<h2>{{$a->codigo}}.- {{$a->nombre}}</h2>
+								<p></p>
+								<span>
+									<span>${{$a->precio}}</span>
+								</span>
+								<p><b>Costo:</b> ${{$a->costo}}</p>
+								<p><b>Descripción:</b> {{$a->descripcion}}</p>
+							</div><!--/product-information-->
+						</div>
+						@endforeach
+		</div><!--/product-details-->
+	</div>
+</div>
+
 
 @stop
+
