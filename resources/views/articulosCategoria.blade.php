@@ -1,4 +1,4 @@
-@extends('principal')
+p@extends('principal')
 
 @section ('contenido')
 <div class="container">

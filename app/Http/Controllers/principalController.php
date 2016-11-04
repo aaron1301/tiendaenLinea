@@ -10,6 +10,6 @@ class principalController extends Controller
 {
     public function home(){
     	$categorias=Categoria::all();
-    	return view('home',compact('categorias'));
+    	return view('inicio',compact('categorias'));
     }
 }

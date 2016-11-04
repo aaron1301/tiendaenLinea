@@ -15,8 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('inicio','principalController@home');
+Route::get('/inicio','principalController@home');
 
 Route::get('articulosCategoria/{id}','articulosController@verArticulos');
 
 Route::get('articuloDetalle/{codigo}','articulosController@articuloDetalle');
+Auth::routes();
+
+
