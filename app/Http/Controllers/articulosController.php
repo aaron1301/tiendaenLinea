@@ -20,5 +20,17 @@ class articulosController extends Controller
    		$articulo=Articulo::where('codigo',$codigo)->get();
    		$categorias = Categoria::all();
     	return view('articuloDetalle', compact('articulo','categorias'));
+    }
+
+    public function nuevoArticulo(Request $datos){
+        $nuevo = new Articulo;
+        $nuevo->nombre=$datos->input('nombre');
+        $nuevo->precio=$datos->input('precio');
+        $nuevo->descripcion=$datos->input('descripcion');
+        $nuevo->costo=$datos->input('costo');
+        $nuevo->categoria=$datos->input('categoria');
+        $nuevo->save();
+
+        return Redirect('administrar');
     } 
 }

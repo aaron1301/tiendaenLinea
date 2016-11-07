@@ -12,4 +12,13 @@ class principalController extends Controller
     	$categorias=Categoria::all();
     	return view('inicio',compact('categorias'));
     }
+
+    public function administrar(){
+    	return view('administrar');
+    }
+
+    public function nuevoArticulo(){
+        $categorias=Categoria::all();
+    	return view('nuevoArticulo',compact('categorias'));
+    }
 }

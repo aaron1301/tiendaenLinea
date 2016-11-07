@@ -14,6 +14,8 @@ create table articulo(
 	descripcion varchar(500),
 	costo decimal(10,2) not null,
 	categoria int not null,
+	created_at timestamp not null,
+	updated_at timestamp not null,
 	primary key(codigo),
 	foreign key(categoria) references categoria(id)	
 	);

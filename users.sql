@@ -1,4 +1,4 @@
-use database tienda;
+use tienda;
 
 create table users(  
   id int(10) auto_increment not null,

@@ -56,6 +56,7 @@
 										</ul>
 									</li>
 								@endif
+								<li><a href="{{ url('/administrar') }}">Administrar</a></li>
 
 							</ul>
 						</div>
