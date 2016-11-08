@@ -1,4 +1,4 @@
-@extends('principal')
+@extends('layouts.principal')
 
 @section('contenido')
 <div class="container">
@@ -19,7 +19,7 @@
                         <div id="articulos" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <ul>
-                                    <li><a href="#">Configurar Existentes</a></li>
+                                    <li><a href="{{url('/configurarArticulos')}}">Configurar Existentes</a></li>
                                     <li><a href="{{url('/nuevoArticulo')}}">Generar Nuevo Articulo </a></li>
                                     <li><a href="#">Generar Articulos por CSV </a></li>                                    
                                 </ul>
@@ -55,6 +55,10 @@
                 </div>          
             </div>        
 
+        </div>
+
+        <div class="col-sm-9 padding-right">
+        @yield('contenido_administrar')            
         </div>
     </div>
 

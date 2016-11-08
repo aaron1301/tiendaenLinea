@@ -14,7 +14,7 @@ class principalController extends Controller
     }
 
     public function administrar(){
-    	return view('administrar');
+    	return view('layouts.administrar');
     }
 
     public function nuevoArticulo(){

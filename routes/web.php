@@ -25,6 +25,12 @@ Route::get('/articulosCategoria/{id}','articulosController@verArticulos');
 
 Route::get('/articuloDetalle/{codigo}','articulosController@articuloDetalle');
 
+Route::get('/configurarArticulos','articulosController@configArticulos');
+
+Route::get('/configurarArticulo/{codigo}','articulosController@configArticulo');
+
+Route::post('/actualizarArticulo/{codigo}','articulosController@actualizarArticulo');
+
 Route::post('/generarArticulo','articulosController@nuevoArticulo');
 
 Auth::routes();

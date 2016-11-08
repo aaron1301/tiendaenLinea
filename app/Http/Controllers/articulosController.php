@@ -33,4 +33,29 @@ class articulosController extends Controller
 
         return Redirect('administrar');
     } 
+
+    public function configArticulos(){
+        $articulos = Articulo::all();
+        return view('configArticulos',compact('articulos'));
+    }
+
+    public function configArticulo($codigo){
+        $articulo = Articulo::find($codigo);
+        $categorias = Categoria::all();
+        return view('configArticulo',compact('articulo','categorias'));
+    }
+
+    public function actualizarArticulo($codigo, Request $datos){
+        $articulo= Articulo::find($codigo);
+        $articulo->nombre=$datos->input('nombre');
+        $articulo->precio=$datos->input('precio');
+        $articulo->descripcion=$datos->input('descripcion');
+        $articulo->costo=$datos->input('costo');
+        $articulo->categoria=$datos->input('categoria');
+        $articulo->save();
+
+        return Redirect('configurarArticulos'); 
+
+        
+    }
 }
