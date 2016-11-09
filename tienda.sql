@@ -4,6 +4,8 @@ use tienda;
 create table categoria(
 	id int auto_increment not null,	
 	nombre varchar(50) not null,
+	created_at timestamp not null,
+	updated_at timestamp not null,
 	primary key(id)	
 	);
 

@@ -33,6 +33,14 @@ Route::post('/actualizarArticulo/{codigo}','articulosController@actualizarArticu
 
 Route::post('/generarArticulo','articulosController@nuevoArticulo');
 
+Route::get('/configurarCategorias','categoriasController@configCategorias');
+
+Route::get('/configurarCategoria/{id}','CategoriasController@configCategoria');
+
+Route::post('/actualizarCategoria/{id}','categoriasController@actualizarCategoria');
+
+
+
 Auth::routes();
 
 
