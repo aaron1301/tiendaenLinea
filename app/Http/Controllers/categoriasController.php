@@ -25,4 +25,12 @@ class categoriasController extends Controller
 
         return Redirect('configurarCategorias'); 
     }
+
+    public function nuevaCategoria(Request $datos){
+        $nuevo = new Categoria;
+        $nuevo->nombre=$datos->input('nombre');
+        $nuevo->save();
+
+        return Redirect('configurarCategorias');
+    } 
 }

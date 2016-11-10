@@ -37,9 +37,14 @@ Route::get('/importarCSV','principalController@importarCSV');
 
 Route::get('/configurarCategorias','categoriasController@configCategorias');
 
-Route::get('/configurarCategoria/{id}','CategoriasController@configCategoria');
+Route::get('/configurarCategoria/{id}','categoriasController@configCategoria');
 
 Route::post('/actualizarCategoria/{id}','categoriasController@actualizarCategoria');
+
+Route::get('/nuevaCategoria','principalController@nuevaCategoria');
+
+Route::post('/generarCategoria','categoriasController@nuevaCategoria');
+
 
 
 

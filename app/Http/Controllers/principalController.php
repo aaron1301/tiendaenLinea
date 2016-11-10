@@ -25,4 +25,8 @@ class principalController extends Controller
     public function importarCSV(){
         return view('configArticulosCSV');
     }
+
+    public function nuevaCategoria(){
+        return view('nuevaCategoria');
+    }
 }
