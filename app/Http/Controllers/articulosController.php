@@ -60,7 +60,27 @@ class articulosController extends Controller
     }
 
     public function generarArticulosCSV(Request $datos){
-                    
+        $archivo=$datos->file('archivo')->path();                 
+        $articulos = array();
+        $header = null;
+        if (($handle = fopen($archivo, 'r')) !== false){
+            while (($fila = fgetcsv($handle, 1000)) !== false){
+                if (!$header)
+                    $header = $fila;
+                else
+                    $articulos[] = array_combine($header, $fila);
+            }
+            fclose($handle);
+        }
+        foreach($articulos as $a){
+            $nuevo = new Articulo;
+            $nuevo->nombre=$a["nombre"];
+            $nuevo->precio=$a["precio"];            
+            $nuevo->costo=$a["costo"];
+            $nuevo->categoria=$a["categoria"];
+            $nuevo->save();
+        }
+        return Redirect('/configurarArticulos');
         
     }
 }

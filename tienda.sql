@@ -27,3 +27,26 @@ insert into	categoria(nombre) values("Accesorios");
 
 insert into articulo(nombre,precio,costo,categoria) values("Moto X",5000,4000,1);
 insert into articulo(nombre,precio,costo,categoria) values("Galaxy 7",8000,8000,1);
+
+create table users(  
+  id int(10) auto_increment not null,
+  name varchar(255)  not null,
+  email varchar(255) not null,
+  password varchar(255) not null,
+  remember_token varchar(100),
+  `created_at` timestamp,
+  `updated_at` timestamp,
+  primary key (id),
+  unique key(email)
+);
+
+
+CREATE TABLE password_resets(
+  email varchar(255) not null,
+  token varchar(255) not null,
+  created_at timestamp,
+  key(email),
+  key(token) 
+);
+
+	
