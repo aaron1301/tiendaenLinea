@@ -21,7 +21,7 @@
                                 <ul>
                                     <li><a href="{{url('/configurarArticulos')}}">Configurar Existentes</a></li>
                                     <li><a href="{{url('/nuevoArticulo')}}">Generar Nuevo Articulo </a></li>
-                                    <li><a href="#">Generar Articulos por CSV </a></li>                                    
+                                    <li><a href="{{url('/importarCSV')}}">Generar Articulos por CSV </a></li>                                    
                                 </ul>
                             </div>
                         </div>

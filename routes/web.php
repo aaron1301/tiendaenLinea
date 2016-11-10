@@ -33,6 +33,8 @@ Route::post('/actualizarArticulo/{codigo}','articulosController@actualizarArticu
 
 Route::post('/generarArticulo','articulosController@nuevoArticulo');
 
+Route::get('/importarCSV','principalController@importarCSV');
+
 Route::get('/configurarCategorias','categoriasController@configCategorias');
 
 Route::get('/configurarCategoria/{id}','CategoriasController@configCategoria');
@@ -42,6 +44,10 @@ Route::post('/actualizarCategoria/{id}','categoriasController@actualizarCategori
 
 
 Auth::routes();
+
+//Prueba
+
+Route::post('generarArticulosCSV','articulosController@generarArticulosCSV');
 
 
 

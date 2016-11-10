@@ -21,4 +21,8 @@ class principalController extends Controller
         $categorias=Categoria::all();
     	return view('nuevoArticulo',compact('categorias'));
     }
+
+    public function importarCSV(){
+        return view('configArticulosCSV');
+    }
 }

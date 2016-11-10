@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Articulo;
 use App\Categoria;
 use DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class articulosController extends Controller
 {
@@ -54,8 +56,11 @@ class articulosController extends Controller
         $articulo->categoria=$datos->input('categoria');
         $articulo->save();
 
-        return Redirect('configurarArticulos'); 
+        return Redirect('configurarArticulos');                
+    }
 
+    public function generarArticulosCSV(Request $datos){
+                    
         
     }
 }
