@@ -33,7 +33,7 @@ class articulosController extends Controller
         $nuevo->categoria=$datos->input('categoria');
         $nuevo->save();
 
-        return Redirect('administrar');
+        return Redirect('configurarArticulos');
     } 
 
     public function configArticulos(){

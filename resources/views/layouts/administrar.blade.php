@@ -39,7 +39,7 @@
                             <div class="panel-body">
                                 <ul>
                                     <li><a href="{{url('/configurarCategorias')}}">Configurar Existentes</a></li>
-                                    <li><a href="#">Generar Nueva Categoria</a></li>                                    
+                                    <li><a href="{{url('/nuevaCategoria')}}">Generar Nueva Categoria</a></li>                                    
                                 </ul>
                             </div>
                         </div>
