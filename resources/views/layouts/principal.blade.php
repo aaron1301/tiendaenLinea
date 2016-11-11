@@ -26,7 +26,7 @@
 				<div class="row">					
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href=""><img src="" alt="" /></a>
+							<a href="{{url('inicio')}}"><img src="{{asset ("images/home/logo.png")}}" alt="" /></a>
 						</div>						
 					</div>
 					<div class="col-sm-8">

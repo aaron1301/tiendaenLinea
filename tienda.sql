@@ -29,8 +29,11 @@ insert into articulo(nombre,precio,costo,categoria) values("Moto X",5000,4000,1)
 insert into articulo(nombre,precio,costo,categoria) values("Galaxy 7",8000,8000,1);
 
 create table users(  
-  id int(10) auto_increment not null,
+  id int auto_increment not null,
   name varchar(255)  not null,
+  direccion varchar(255) not null,
+  telefono int not null,  
+  fecha_nacimiento date not null,
   email varchar(255) not null,
   password varchar(255) not null,
   remember_token varchar(100),
@@ -47,6 +50,32 @@ CREATE TABLE password_resets(
   created_at timestamp,
   key(email),
   key(token) 
+);
+
+create table calificacion(  
+  id int auto_increment not null,
+  valor int  not null,
+  usuario int not null,
+  articulo int not null,  
+  `created_at` timestamp,
+  `updated_at` timestamp,
+  primary key (id),
+  foreign key (usuario) references users(id),
+  foreign key (articulo) references articulo(codigo),
+  unique key(usuario,articulo)
+);
+
+create table comentario(  
+  id int auto_increment not null,
+  contenido varchar(255)  not null,
+  usuario int not null,
+  articulo int not null,  
+  `created_at` timestamp,
+  `updated_at` timestamp,
+  primary key (id),
+  foreign key (usuario) references users(id),
+  foreign key (articulo) references articulo(codigo),
+  unique key(usuario,articulo)
 );
 
 	
