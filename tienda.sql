@@ -36,6 +36,7 @@ create table users(
   fecha_nacimiento date not null,
   email varchar(255) not null,
   password varchar(255) not null,
+  administrador boolean default false,
   remember_token varchar(100),
   `created_at` timestamp,
   `updated_at` timestamp,
@@ -43,6 +44,7 @@ create table users(
   unique key(email)
 );
 
+insert into users(name,direccion,telefono,fecha_nacimiento,email,password,administrador) values("Aaron Velazquez","Por ahi",7280311,'1993-01-13',"aaron@gmail.com","$2y$10$kBtlyj7zO9L9iJFQgkyvY.jaCkWBrzAoCi8fmSfVa.BZ7kinRxQaG",true);
 
 CREATE TABLE password_resets(
   email varchar(255) not null,

@@ -1,8 +1,10 @@
 @extends('layouts.principal')
 
 @section('contenido')
+
 <div class="container">
     <div class="row">
+    @can('acceso_admin')
         <div class="col-sm-3">
             <div class="left-sidebar">
                 <h2>Opciones</h2>
@@ -60,6 +62,12 @@
         <div class="col-sm-9 padding-right">
         @yield('contenido_administrar')            
         </div>
-    </div>
+        @endcan
 
-    @endsection
+        @cannot('acceso_admin')
+        <h1>Acceso Restringido</h1>
+        @endcannot
+
+    </div> 
+
+    @endsection 

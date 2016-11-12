@@ -17,42 +17,50 @@ Route::get('/', function () {
 
 Route::get('/inicio','principalController@home');
 
-Route::get('/nuevoArticulo','principalController@nuevoArticulo');
 
-Route::get('/administrar','principalController@administrar');
 
 Route::get('/articulosCategoria/{id}','articulosController@verArticulos');
 
 Route::get('/articuloDetalle/{codigo}','articulosController@articuloDetalle');
 
-Route::get('/configurarArticulos','articulosController@configArticulos');
-
-Route::get('/configurarArticulo/{codigo}','articulosController@configArticulo');
-
-Route::post('/actualizarArticulo/{codigo}','articulosController@actualizarArticulo');
-
-Route::post('/generarArticulo','articulosController@nuevoArticulo');
-
-Route::get('/importarCSV','principalController@importarCSV');
-
-Route::get('/configurarCategorias','categoriasController@configCategorias');
-
-Route::get('/configurarCategoria/{id}','categoriasController@configCategoria');
-
-Route::post('/actualizarCategoria/{id}','categoriasController@actualizarCategoria');
-
-Route::get('/nuevaCategoria','principalController@nuevaCategoria');
-
-Route::post('/generarCategoria','categoriasController@nuevaCategoria');
-
-
 
 
 Auth::routes();
 
-//Prueba
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/administrar','principalController@administrar');
 
-Route::post('generarArticulosCSV','articulosController@generarArticulosCSV');
+	Route::get('/nuevoArticulo','principalController@nuevoArticulo');
+
+	Route::get('/configurarArticulos','articulosController@configArticulos');
+
+	Route::get('/configurarArticulo/{codigo}','articulosController@configArticulo');
+
+	Route::post('/actualizarArticulo/{codigo}','articulosController@actualizarArticulo');
+	
+	Route::post('/generarArticulo','articulosController@nuevoArticulo');
+
+	Route::get('/importarCSV','principalController@importarCSV');
+
+	Route::get('/configurarCategorias','categoriasController@configCategorias');
+
+	Route::get('/configurarCategoria/{id}','categoriasController@configCategoria');
+
+	Route::post('/actualizarCategoria/{id}','categoriasController@actualizarCategoria');
+
+	Route::get('/nuevaCategoria','principalController@nuevaCategoria');
+
+	Route::post('/generarCategoria','categoriasController@nuevaCategoria');
+
+	Route::post('generarArticulosCSV','articulosController@generarArticulosCSV');
+
+
+
+});
+
+
+
+
 
 
 

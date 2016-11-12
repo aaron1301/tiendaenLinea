@@ -55,8 +55,11 @@
 											</li>
 										</ul>
 									</li>
+									@can('acceso_admin')
+										<li><a href="{{ url('/administrar') }}">Administrar</a></li>
+									@endcan	
 								@endif
-								<li><a href="{{ url('/administrar') }}">Administrar</a></li>
+								
 
 							</ul>
 						</div>
