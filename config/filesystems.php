@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 'publico',
 
     /*
     |--------------------------------------------------------------------------
@@ -42,6 +42,12 @@ return [
     */
 
     'disks' => [
+
+        'publico' => [
+            'driver' => 'local',
+            'root' => public_path(),
+            'visibility' => 'public',
+        ],
 
         'local' => [
             'driver' => 'local',

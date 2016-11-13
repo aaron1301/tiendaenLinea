@@ -7,7 +7,7 @@
         <form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST" action="{{url('/generarArticulosCSV')}}">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="form-group">
-                <label for="nombre" class="col-md-4 control-label">Archivo</label>
+                <label for="archivo" class="col-md-4 control-label">Archivo</label>
                 <div class="col-md-6">
                     <input name="archivo" type="file" class="form-control" accept=".csv" required>                                
                 </div>

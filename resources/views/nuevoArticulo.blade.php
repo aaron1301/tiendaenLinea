@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label for="descripcion" class="col-md-4 control-label">Descripcion</label>
                 <div class="col-md-6">
-                    <input name="descripcion" type="text" class="form-control" required>                                
+                    <input name="descripcion" type="text" class="form-control">                                
                 </div>
             </div>
 
@@ -43,11 +43,19 @@
                         @endforeach                                    
                     </select>                               
                 </div>
-            </div>           
+            </div>
+
+            <div class="form-group">
+                <label for="imagen" class="col-md-4 control-label">Imagen</label>
+                <div class="col-md-6">
+                    <input name="imagen" type="file" class="form-control" accept="image/jpg">                                
+                </div>
+            </div>                
 
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
                     <button type="submit" class="btn btn-primary">Generar Articulo</button>
+                    <a href="{{url('/administrar')}}" class="btn btn-primary">Cancelar</a>
                 </div>
             </div>
         </form>

@@ -1,5 +1,10 @@
 @extends('layouts.principal')
 
+@section('breadcrum')
+<li><a href="{{url('administrar')}}">Administrar</a></li>                    
+
+@endsection
+
 @section('contenido')
 
 <div class="container">

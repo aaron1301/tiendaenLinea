@@ -1,5 +1,9 @@
 @extends('layouts.principal')
 
+@section('breadcrum')
+<li><a href="{{url('articulosCategoria')}}/{{$categoria->id}}">{{$categoria->nombre}}</a></li>
+@endsection
+
 @section ('contenido')
 <div class="container">
 	<div class="row">
@@ -26,7 +30,7 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="" alt="" />
+									<img src="{{asset("imagenes/articulos/$a->codigo.jpg")}}" alt="" />
 									<h2>${{$a->precio}}</h2>
 									<p>{{$a->nombre}}</p>
 								</div>
@@ -40,7 +44,7 @@
 							</div>
 							<div class="choose">
 								<ul class="nav nav-pills nav-justified">
-									<li><a href="{{url('articuloDetalle')}}/{{$a->codigo}}"><i class="fa fa-plus-square"></i>Ver</a></li>
+									<li><a href="{{url('articuloDetalle')}}/{{$a->codigo}}"><i class="fa fa-plus-square"></i>Ver Informacion</a></li>
 								</ul>
 							</div>			
 						</div>

@@ -8,6 +8,8 @@ use App\Articulo;
 use App\Categoria;
 use DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+
 
 
 class articulosController extends Controller
@@ -15,13 +17,14 @@ class articulosController extends Controller
     public function verArticulos($id){
     	$articulos = Articulo::where('categoria',$id)->get();
     	$categorias = Categoria::all();
-    	return view('articulosCategoria',compact('articulos','categorias'));
+        $categoria=Categoria::find($id);
+    	return view('articulosCategoria',compact('articulos','categorias','categoria'));
     }
 
     public function articuloDetalle($codigo){
-   		$articulo=Articulo::where('codigo',$codigo)->get();
-   		$categorias = Categoria::all();
-    	return view('articuloDetalle', compact('articulo','categorias'));
+   		$articulo=Articulo::find($codigo);   		
+        $categoria=Categoria::find($articulo->categoria);
+    	return view('articuloDetalle', compact('articulo','categoria'));
     }
 
     public function nuevoArticulo(Request $datos){
@@ -31,8 +34,8 @@ class articulosController extends Controller
         $nuevo->descripcion=$datos->input('descripcion');
         $nuevo->costo=$datos->input('costo');
         $nuevo->categoria=$datos->input('categoria');
+        $imagen = $datos->file('imagen')->StoreAs('imagenes/articulos', $codigo.'.jpg');
         $nuevo->save();
-
         return Redirect('configurarArticulos');
     } 
 
@@ -54,6 +57,7 @@ class articulosController extends Controller
         $articulo->descripcion=$datos->input('descripcion');
         $articulo->costo=$datos->input('costo');
         $articulo->categoria=$datos->input('categoria');
+        $imagen = $datos->file('imagen')->StoreAs('imagenes/articulos', $codigo.'.jpg');                
         $articulo->save();
 
         return Redirect('configurarArticulos');                

@@ -26,7 +26,7 @@
 				<div class="row">					
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="{{url('inicio')}}"><img src="{{asset ("images/home/logo.png")}}" alt="" /></a>
+							<a href="{{url('inicio')}}"><img src="{{asset ("imagenes/inicio/logo.png")}}" alt="" /></a>
 						</div>						
 					</div>
 					<div class="col-sm-8">
@@ -70,7 +70,7 @@
 	
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
-				<div class="row">
+				<div class="row">					
 					<div class="col-sm-9">						
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -82,7 +82,7 @@
 						</div>						
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="{{url('inicio')}}" class="active">Home</a></li>
+								<li><a href="{{url('inicio')}}" class="active">Inicio</a></li>
 								<li><a href="" class="active">Seccion1</a></li>
 								<li><a href="" class="active">Seccion2</a></li>																
 							</ul>
@@ -91,12 +91,20 @@
 				</div>
 			</div>
 		</div><!--/header-bottom-->
-	</header><!--/header-->	
+	</header><!--/header-->
 
 
-	
 	
 	<section>
+		<div class="container">
+			<div class="row">
+				<ol class="breadcrumb">
+					<li><a href="{{url('inicio')}}">Inicio</a></li>
+					@yield('breadcrum')					
+				</ol>
+			</div>
+		</div>
+
 		@yield('contenido')	
 	</section>
 	
