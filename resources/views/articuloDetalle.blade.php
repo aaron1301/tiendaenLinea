@@ -88,7 +88,14 @@
 								<input type="hidden" name="_token" value="{{csrf_token()}}">
 								<select name="calificacion" required>
 									@for ($i=0;$i<=10;$i++)
-									<option value="{{$i}}">{{$i}}</option>
+										@if($calificacion == null)
+											<option value="{{$i}}">{{$i}}</option>
+										@elseif($calificacion->valor==$i)
+											<option value="{{$i}}" selected>{{$i}}</option>
+										@else
+											<option value="{{$i}}">{{$i}}</option>	
+
+										@endif
 									@endfor
 								</select>
 								<button type="submit" class="btn btn-primary">Calificar</button>									
