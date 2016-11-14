@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Articulo;
 use App\Categoria;
+use App\Calificacion;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
@@ -86,5 +87,16 @@ class articulosController extends Controller
         }
         return Redirect('/configurarArticulos');
         
+    }
+
+    public function calificarArticulo($codigo,Request $datos){
+        $nuevo = new Calificacion;
+        $nuevo->valor=$datos->input('calificacion');
+        $nuevo->usuario=$datos->user()->id;
+        $nuevo->articulo=$codigo;
+        $nuevo->save();
+
+        return Redirect('/articuloDetalle/'.$codigo);
+
     }
 }

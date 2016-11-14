@@ -23,14 +23,14 @@
 		</div>
 
 		<div class="col-sm-9 padding-right">
-			<div class="features_items"><!--features_items-->
+			<div class="features_items">
 				<h2 class="title text-center">Articulos</h2>
 				@foreach($articulos as $a)
 					<div class="col-sm-4">
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="{{asset("imagenes/articulos/$a->codigo.jpg")}}" alt="" />
+									<img src="{{asset("imagenes/articulos/$a->codigo.jpg")}}" alt="">
 									<h2>${{$a->precio}}</h2>
 									<p>{{$a->nombre}}</p>
 								</div>

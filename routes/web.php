@@ -52,7 +52,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('/generarCategoria','categoriasController@nuevaCategoria');
 
-	Route::post('generarArticulosCSV','articulosController@generarArticulosCSV');
+	Route::post('/generarArticulosCSV','articulosController@generarArticulosCSV');
+
+	Route::post('/calificarArticulo/{codigo}','articulosController@calificarArticulo');
 
 
 
