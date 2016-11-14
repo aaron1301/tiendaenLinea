@@ -11,6 +11,9 @@ use App\Comentario;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -19,14 +22,20 @@ class articulosController extends Controller
     public function verArticulos($id){
     	$articulos = Articulo::where('categoria',$id)->get();
     	$categorias = Categoria::all();
-        $categoria=Categoria::find($id);
+        $categoria=Categoria::find($id);        
     	return view('articulosCategoria',compact('articulos','categorias','categoria'));
     }
 
     public function articuloDetalle($codigo){
    		$articulo=Articulo::find($codigo);   		
         $categoria=Categoria::find($articulo->categoria);
-    	return view('articuloDetalle', compact('articulo','categoria'));
+        try{
+            $calificacion=Calificacion::where('usuario',Auth::id())->where('articulo',$codigo)->firstOrFail();            
+        }catch(ModelNotFoundException $e){
+            $calificacion=null;
+            
+        }
+    	return view('articuloDetalle', compact('articulo','categoria','calificacion'));
     }
 
     public function nuevoArticulo(Request $datos){
@@ -92,11 +101,17 @@ class articulosController extends Controller
     }
 
     public function calificarArticulo($codigo,Request $datos){
-        $nuevo = new Calificacion;
-        $nuevo->valor=$datos->input('calificacion');
-        $nuevo->usuario=$datos->user()->id;
-        $nuevo->articulo=$codigo;
-        $nuevo->save();
+        try{
+            $calificacion=Calificacion::where('usuario',$datos->user()->id)->where('articulo',$codigo)->firstOrFail();
+            $calificacion->valor=$datos->input('calificacion');
+            $calificacion->save();            
+        }catch(ModelNotFoundException $e){
+            $nuevo = new Calificacion;
+            $nuevo->valor=$datos->input('calificacion');
+            $nuevo->usuario=$datos->user()->id;
+            $nuevo->articulo=$codigo;
+            $nuevo->save();
+        }       
 
         return Redirect('/articuloDetalle/'.$codigo);
 
