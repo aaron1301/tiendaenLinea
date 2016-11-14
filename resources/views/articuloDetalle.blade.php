@@ -58,28 +58,39 @@
 					</div>					
 
 					<div class="tab-pane fade" id="reviews" >
-						<div class="col-sm-12">
-							<ul>
-								<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-								<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-								<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
-							</ul>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-							</p>							
-						</div>
-						<div class="col-sm-12">
-							@if(!Auth::guest())
-							<p><b>Escribe tu comentario</b></p>
 
-							<form action="#">								
-								<textarea name="" ></textarea>								
-								<button type="button" class="btn btn-default pull-right">
+						<div class="col-sm-12" id="comentar">
+							@if(!Auth::guest())
+							<p><b><h3>Escribe tu comentario</h3></b></p>
+
+							<form method="POST" action="{{url('/comentarArticulo')}}/{{$articulo->codigo}}">
+							<input type="hidden" name="_token" value="{{csrf_token()}}">								
+								<textarea name="comentario" required></textarea>								
+								<button type="submit" class="btn btn-default pull-right">
 									Comentar
 								</button>
 							</form>
 							@endif							
 						</div>
+
+						<div class="media commnets">
+						<p><b><h3>Comentarios</h3></b></p>
+						<div class="media-body">
+							<h4 class="media-heading">cesar</h4>
+							<p>comentario</p>
+							<div class="blog-socials">
+								<ul>
+									<li><a href=""><i class="fa fa-facebook"></i></a></li>
+									<li><a href=""><i class="fa fa-twitter"></i></a></li>
+									<li><a href=""><i class="fa fa-dribbble"></i></a></li>
+									<li><a href=""><i class="fa fa-google-plus"></i></a></li>
+								</ul>
+								<a class="btn btn-primary" href="">Other Posts</a>
+							</div>
+						</div>
+					</div><!--Comments-->
 					</div>
+
 
 					<div class="tab-pane fade" id="calificar" >
 						@if(!Auth::guest())
@@ -91,11 +102,10 @@
 									<option value="{{$i}}">{{$i}}</option>
 									@endfor
 								</select>
-								<button type="submit" class="btn btn-primary">Calificar</button>									
+								<button type="submit" class="btn btn-primary">Calificar</button>								
 							</form>
 						</div>	
 						@endif
-
 					</div>
 
 				</div>

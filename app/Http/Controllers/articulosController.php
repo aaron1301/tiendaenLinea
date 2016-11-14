@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Articulo;
 use App\Categoria;
 use App\Calificacion;
+use App\Comentario;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
@@ -80,7 +81,8 @@ class articulosController extends Controller
         foreach($articulos as $a){
             $nuevo = new Articulo;
             $nuevo->nombre=$a["nombre"];
-            $nuevo->precio=$a["precio"];            
+            $nuevo->precio=$a["precio"]; 
+            $nuevo->descripcion=$a["descripcion"];            
             $nuevo->costo=$a["costo"];
             $nuevo->categoria=$a["categoria"];
             $nuevo->save();
@@ -98,5 +100,15 @@ class articulosController extends Controller
 
         return Redirect('/articuloDetalle/'.$codigo);
 
+    }
+
+    public function comentarArticulo($codigo, Request $datos){
+        $coment = new Comentario;
+        $coment->contenido=$datos->input('comentario');
+        $coment->usuario=$datos->user()->id;
+        $coment->articulo=$codigo;
+        $coment->save();
+
+        return Redirect('/articuloDetalle/'.$codigo);
     }
 }

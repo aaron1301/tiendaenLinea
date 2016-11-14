@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('/calificarArticulo/{codigo}','articulosController@calificarArticulo');
 
-
+	Route::post('/comentarArticulo/{codigo}','articulosController@comentarArticulo');
 
 });
 
