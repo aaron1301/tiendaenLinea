@@ -35,7 +35,7 @@
 								<a href="{{url('articulosCategoria')}}/{{$cate->id}}"><button type="button" class="btn btn-default get">¡Ver Más!</button></a>
 							</div>
 							<div class="col-sm-6">
-								<img src="{{asset("imagenes/inicio/$cate->id.jpg")}}" class="girl img-responsive" alt="" />
+								<img src="{{asset("imagenes/categorias/$cate->id.jpg")}}" class="girl img-responsive" alt="" />
 								<img src=""  class="pricing" alt="" />
 							</div>
 						</div>
