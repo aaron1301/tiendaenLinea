@@ -6,6 +6,7 @@
         <tr>
             <th>ID</th>
             <th>Nombre</th>
+            <th>Descripción</th>
         </tr>
     </thead>
 
@@ -14,6 +15,7 @@
         <tr>
             <td>{{$c->id}}</td>
             <td>{{$c->nombre}}</td>
+            <td>{{$c->descripcion}}</td>
             <td>
                 <a href="{{url('/configurarCategoria')}}/{{$c->id}}" class="btn btn-xs btn-primary">
                     <span class="glyphicon glyphicon-edit" aria-hidden="true">Configurar</span>

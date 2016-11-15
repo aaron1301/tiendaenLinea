@@ -26,7 +26,7 @@
 				<div class="row">					
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="{{url('inicio')}}"><img src="{{asset ("imagenes/inicio/logo.png")}}" alt="" /></a>
+							<a href="{{url('inicio')}}"><img src="{{asset ("imagenes/inicio/tienda.png")}}" alt="" /></a>
 						</div>						
 					</div>
 					<div class="col-sm-8">
@@ -82,9 +82,7 @@
 						</div>						
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="{{url('inicio')}}" class="active">Inicio</a></li>
-								<li><a href="" class="active">Seccion1</a></li>
-								<li><a href="" class="active">Seccion2</a></li>																
+								<li><a href="{{url('inicio')}}" class="active">Inicio</a></li>				
 							</ul>
 						</div>
 					</div>					

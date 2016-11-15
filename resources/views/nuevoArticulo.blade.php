@@ -4,7 +4,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">Nuevo Articulo</div>
     <div class="panel-body">
-        <form class="form-horizontal" role="form" method="POST" action="{{url('/generarArticulo')}}">
+        <form class="form-horizontal" role="form" method="POST" action="{{url('/generarArticulo')}}"" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="form-group">
                 <label for="nombre" class="col-md-4 control-label">Nombre</label>

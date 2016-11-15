@@ -21,7 +21,9 @@ class categoriasController extends Controller
     public function actualizarCategoria($id, Request $datos){
         $categoria= Categoria::find($id);
         $categoria->nombre=$datos->input('nombre');
+        $categoria->descripcion=$datos->input('descripcion');
         $categoria->save();
+        $imagen = $datos->file('imagen')->StoreAs('imagenes/inicio',$categoria->id.'.jpg');
 
         return Redirect('configurarCategorias'); 
     }
@@ -29,7 +31,9 @@ class categoriasController extends Controller
     public function nuevaCategoria(Request $datos){
         $nuevo = new Categoria;
         $nuevo->nombre=$datos->input('nombre');
+        $nuevo->descripcion=$datos->input('descripcion');
         $nuevo->save();
+        $imagen = $datos->file('imagen')->StoreAs('imagenes/inicio',$nuevo->id.'.jpg');
 
         return Redirect('configurarCategorias');
     } 

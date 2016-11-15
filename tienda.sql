@@ -4,6 +4,7 @@ use tienda;
 create table categoria(
 	id int auto_increment not null,	
 	nombre varchar(50) not null,
+  descripcion varchar(500) not null,
 	created_at timestamp not null,
 	updated_at timestamp not null,
 	primary key(id)	
@@ -22,9 +23,12 @@ create table articulo(
 	foreign key(categoria) references categoria(id)	
 	);
 
-insert into	categoria(nombre) values("Celulares");
-insert into	categoria(nombre) values("Accesorios");
-insert into categoria(nombre) values("Tablets");
+insert into	categoria(nombre,descripcion) values("Celulares","Los mejores equipos para todos los miembros de la familia, elige el que se adapte mejor a tus necesidades.");
+insert into	categoria(nombre,descripcion) values("Accesorios","Si se te descompuso o te hace falta algo nuevo para tus equipos nosotros tenemos todo tipo de accesorios");
+insert into categoria(nombre,descripcion) values("Tablets","Todos los niños quieren una, y los adultos las necesitan, mira cada uno de los modelos y marcas que ofrecemos");
+insert into categoria(nombre,descripcion) values("Laptops","Nos distingue la gran variedad de laptops que tenemos, no te quedes sin la tuya visita nuestro catalogo y elige la que sea más apta para ti.");
+insert into categoria(nombre,descripcion) values("Smartwatch","Excelentes relojes para todos aquellos que andan perdidos en el tiempo. ");
+
 
 insert into articulo(nombre,descripcion,precio,costo,categoria) values("Moto X",
 "Moto X siempre te escucha, te responde sin que tengas que usar tus manos. 
@@ -42,7 +46,8 @@ Para esos momentos inolvidables, Galaxy S7 te brinda una cámara de 12 dual mpx 
 insert into articulo(nombre,precio,costo,categoria) values("Samsung Galaxy Tab S",6500,6000,3);
 insert into articulo(nombre,precio,costo,categoria) values("Asus Z580C-B1-BK",3900,2500,3);
 insert into articulo(nombre,precio,costo,categoria) values("Huawei Mate 8",10001,9000,1);
-insert into articulo(nombre,precio,costo,categoria) values("OnePlus 3",11000,10000,1);  
+insert into articulo(nombre,precio,costo,categoria) values("OnePlus 3",11000,10000,1); 
+insert into articulo(nombre,precio,costo,categoria) values("Audiculares",5000,3000,2);  
 
 create table users(  
   id int auto_increment not null,
@@ -61,6 +66,9 @@ create table users(
 );
 
 insert into users(name,direccion,telefono,fecha_nacimiento,email,password,administrador) values("Aaron Velazquez","Por ahi",7280311,'1993-01-13',"aaron@gmail.com","$2y$10$kBtlyj7zO9L9iJFQgkyvY.jaCkWBrzAoCi8fmSfVa.BZ7kinRxQaG",true);
+insert into users(name,direccion,telefono,fecha_nacimiento,email,password,administrador) values("César Manjarrez Admin","La Cruz Elota",1051429,'1993-06-17',"cesar63549@gmail.com","$2y$10$uJLx1tnOF5uv7opFZCiyHO7uboe1D9K6ZMshSomoJ.IXO86WkE5PG",true);
+insert into users(name,direccion,telefono,fecha_nacimiento,email,password,administrador) values("César Manjarrez User","La Cruz Elota",1051429,'1993-06-17',"cesar_170693@hotmail.com","$2y$10$EnL.OZU01JbodT3qulO7qObA99bIN4RJrNtONPHYakJT6kOl7aEIK",false);
+
 
 CREATE TABLE password_resets(
   email varchar(255) not null,

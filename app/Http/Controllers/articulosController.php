@@ -8,6 +8,7 @@ use App\Articulo;
 use App\Categoria;
 use App\Calificacion;
 use App\Comentario;
+use App\User;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
@@ -45,8 +46,8 @@ class articulosController extends Controller
         $nuevo->descripcion=$datos->input('descripcion');
         $nuevo->costo=$datos->input('costo');
         $nuevo->categoria=$datos->input('categoria');
-        $imagen = $datos->file('imagen')->StoreAs('imagenes/articulos', $codigo.'.jpg');
         $nuevo->save();
+        $imagen = $datos->file('imagen')->StoreAs('imagenes/articulos',$nuevo->codigo.'.jpg');
         return Redirect('configurarArticulos');
     } 
 
