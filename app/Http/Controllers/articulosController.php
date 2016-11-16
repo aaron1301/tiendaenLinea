@@ -30,13 +30,17 @@ class articulosController extends Controller
     public function articuloDetalle($codigo){
    		$articulo=Articulo::find($codigo);   		
         $categoria=Categoria::find($articulo->categoria);
+        $comentarios=Comentario::where('articulo',$codigo)
+        ->join('users','users.id','=','usuario')
+        ->get();        
         try{
-            $calificacion=Calificacion::where('usuario',Auth::id())->where('articulo',$codigo)->firstOrFail();            
+            $calificacion=Calificacion::where('usuario',Auth::id())->where('articulo',$codigo)->firstOrFail();
+            $comentario_usuarioactual=Comentario::where('usuario',Auth::id())->where('articulo',$codigo)->firstOrFail();       
         }catch(ModelNotFoundException $e){
             $calificacion=null;
-            
+            $comentario_usuarioactual=null;
         }
-    	return view('articuloDetalle', compact('articulo','categoria','calificacion'));
+    	return view('articuloDetalle', compact('articulo','categoria','calificacion','comentarios','comentario_usuarioactual'));
     }
 
     public function nuevoArticulo(Request $datos){

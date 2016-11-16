@@ -26,11 +26,9 @@
 								Comprar
 							</button>
 						</span>
-						<p><b>Disponibilidad:</b></p>				
+						<p><b>Disponibilidad:</b></p>			
 																	
-					</div>
-
-					
+					</div>					
 					
 				</div>			
 
@@ -60,35 +58,34 @@
 					<div class="tab-pane fade" id="reviews" >
 
 						<div class="col-sm-12" id="comentar">
-							@if(!Auth::guest())
-							<p><b><h3>Escribe tu comentario</h3></b></p>
+							@foreach($comentarios as $c)
+							<ul>
+								<li><a href=""><i class="fa fa-user"></i>{{$c->name}}</a></li>
+								<li><a href=""><i class="fa fa-clock-o"></i>{{date('H:i:s',strtotime($c->created_at))}}</a></li>
+								<li><a href=""><i class="fa fa-calendar-o"></i>{{date('Y-m-d',strtotime($c->created_at))}}</a></li>
+							</ul>
+							<p>{{$c->contenido}}</p>
+							@endforeach							
 
+							
+
+							@if(!Auth::guest())							
+							@if($comentario_usuarioactual==null)
+							<p><b>Escribe tu comentario</b></p>
 							<form method="POST" action="{{url('/comentarArticulo')}}/{{$articulo->codigo}}">
-							<input type="hidden" name="_token" value="{{csrf_token()}}">								
+								<input type="hidden" name="_token" value="{{csrf_token()}}">								
 								<textarea name="comentario" required></textarea>								
 								<button type="submit" class="btn btn-default pull-right">
 									Comentar
 								</button>
 							</form>
-							@endif							
-						</div>
+							@endif
+							@endif
+								
+													
 
-						<div class="media commnets">
-						<p><b><h3>Comentarios</h3></b></p>
-						<div class="media-body">
-							<h4 class="media-heading">cesar</h4>
-							<p>comentario</p>
-							<div class="blog-socials">
-								<ul>
-									<li><a href=""><i class="fa fa-facebook"></i></a></li>
-									<li><a href=""><i class="fa fa-twitter"></i></a></li>
-									<li><a href=""><i class="fa fa-dribbble"></i></a></li>
-									<li><a href=""><i class="fa fa-google-plus"></i></a></li>
-								</ul>
-								<a class="btn btn-primary" href="">Other Posts</a>
-							</div>
 						</div>
-					</div><!--Comments-->
+						
 					</div>
 
 
