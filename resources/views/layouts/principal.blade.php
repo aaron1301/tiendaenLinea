@@ -26,7 +26,7 @@
 				<div class="row">					
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="{{url('inicio')}}"><img src="{{asset ("imagenes/inicio/tienda.png")}}" alt="" /></a>
+							<a href="{{url('inicio')}}"><img src="{{asset ("imagenes/inicio/logoo.png")}}" alt="" /></a>
 						</div>						
 					</div>
 					<div class="col-sm-8">
@@ -110,12 +110,27 @@
 		<div class="footer-top">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-2">
+					<div class="col-sm-3">
 						<div class="companyinfo">
 							<h2><span>T</span>ienda en Linea</h2>
-							<p>Descripcion..... </p>
+							<p>Tienda en linea para que puedas realizar tus compras desde la comodidad de tu hogar a cualesquier hora.</p>
 						</div>
-					</div>					
+					</div>
+					<div class="col-sm-3">
+						<div class="video-gallery text-center">
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="video-gallery text-center">
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="address">
+							<img src="imagenes/inicio/map.png" alt="" />
+							<p class="pull-right">Alcance a nivel mundial, disponible las 24 horas todos los dias.</p>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -125,20 +140,39 @@
 				<div class="row">
 					<div class="col-sm-2">
 						<div class="single-widget">
-							<h2>Servicios</h2>
+							<h2>Proveedores</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Enlace</a></li>
-								<li><a href="#">Enlace</a></li>
-								<li><a href="#">Enlace</a></li>
-								<li><a href="#">Enlace</a></li>
-								<li><a href="#">Enlace</a></li>
+								<li><a href="https://www.motorola.com.mx/home">Motorola</a></li>
+								<li><a href="https://www.microsoft.com/es-mx/">Microsoft</a></li>
+								<li><a href="http://www.lg.com/mx">LG</a></li>
+								<li><a href="http://www.samsung.com/mx/home/">Samsumg</a></li>
+								<li><a href="http://www.lanix.com/">Lanix</a></li>
 							</ul>
 						</div>
 					</div>	
-					
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Dudas y Aclaraciones</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="https://www.google.com.mx/">Google</a></li>
+								<li><a href="https://espanol.yahoo.com/">Yahoo</a></li>
+							</ul>
+						</div>
+					</div>	
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Redes Sociales</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="https://www.facebook.com/">Facebook</a></li>
+								<li><a href="https://twitter.com/?lang=es">Twitter</a></li>
+							</ul>
+						</div>
+					</div>	
 				</div>
 			</div>
 		</div>
+
+
 		
 		<div class="footer-bottom">
 			<div class="container">
