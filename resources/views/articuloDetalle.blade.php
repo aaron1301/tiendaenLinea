@@ -65,12 +65,9 @@
 								<li><a href=""><i class="fa fa-calendar-o"></i>{{date('Y-m-d',strtotime($c->created_at))}}</a></li>
 							</ul>
 							<p>{{$c->contenido}}</p>
-							@endforeach							
+							@endforeach
 
-							
-
-							@if(!Auth::guest())							
-							@if($comentario_usuarioactual==null)
+							@if(!Auth::guest() && $comentario_usuarioactual==null)						
 							<p><b>Escribe tu comentario</b></p>
 							<form method="POST" action="{{url('/comentarArticulo')}}/{{$articulo->codigo}}">
 								<input type="hidden" name="_token" value="{{csrf_token()}}">								
@@ -78,11 +75,8 @@
 								<button type="submit" class="btn btn-default pull-right">
 									Comentar
 								</button>
-							</form>
-							@endif
-							@endif
-								
-													
+							</form>							
+							@endif	
 
 						</div>
 						

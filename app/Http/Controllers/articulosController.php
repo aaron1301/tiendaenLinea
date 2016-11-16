@@ -35,9 +35,15 @@ class articulosController extends Controller
         ->get();        
         try{
             $calificacion=Calificacion::where('usuario',Auth::id())->where('articulo',$codigo)->firstOrFail();
-            $comentario_usuarioactual=Comentario::where('usuario',Auth::id())->where('articulo',$codigo)->firstOrFail();       
+                   
         }catch(ModelNotFoundException $e){
             $calificacion=null;
+            
+        }
+        
+        try {
+            $comentario_usuarioactual=Comentario::where('usuario',Auth::id())->where('articulo',$codigo)->firstOrFail();            
+        } catch (ModelNotFoundException $e) {
             $comentario_usuarioactual=null;
         }
     	return view('articuloDetalle', compact('articulo','categoria','calificacion','comentarios','comentario_usuarioactual'));
