@@ -137,4 +137,22 @@ class articulosController extends Controller
 
         return Redirect('/articuloDetalle/'.$codigo);
     }
+
+    public function moderarComentarios(){
+        $comentario = Comentario::all();
+        return view('moderarComentarios',compact('comentario'));
+    }
+
+    public function moderarComentario($id){
+        $comentario = Comentario::find($id);
+        return view('moderarComentario',compact('comentario'));
+    }
+
+    public function actualizarComentario($id, Request $datos){
+        $comentario = Comentario::find($id);
+        $comentario->contenido=$datos->input('comentario');
+        $comentario->save();
+
+        return Redirect('/moderarComentarios');
+    }
 }

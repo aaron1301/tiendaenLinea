@@ -126,7 +126,7 @@
 					</div>
 					<div class="col-sm-3">
 						<div class="address">
-							<img src="imagenes/inicio/map.png" alt="" />
+							<img src="{{asset("imagenes/inicio/map.png")}}" alt="" />
 							<p class="pull-right">Alcance a nivel mundial, disponible las 24 horas todos los dias.</p>
 						</div>
 					</div>
@@ -172,8 +172,6 @@
 			</div>
 		</div>
 
-
-		
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">

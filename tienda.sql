@@ -104,4 +104,5 @@ create table comentario(
   unique key(usuario,articulo)
 );
 
+insert into comentario(contenido,usuario,articulo) values("gran producto",1,1);
 	

@@ -28,6 +28,7 @@ Route::get('/articuloDetalle/{codigo}','articulosController@articuloDetalle');
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
+
 	Route::get('/administrar','principalController@administrar');
 
 	Route::get('/nuevoArticulo','principalController@nuevoArticulo');
@@ -58,6 +59,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('/comentarArticulo/{codigo}','articulosController@comentarArticulo');
 
+	Route::get('/moderarComentarios','articulosController@moderarComentarios');
+
+	Route::get('/moderarComentario/{id}','articulosController@moderarComentario');
+
+	Route::post('/actualizarComentario/{id}','articulosController@actualizarComentario');
 });
 
 
