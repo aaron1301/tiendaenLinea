@@ -57,13 +57,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('/calificarArticulo/{codigo}','articulosController@calificarArticulo');
 
-	Route::post('/comentarArticulo/{codigo}','articulosController@comentarArticulo');
+	Route::post('/comentarArticulo/{codigo}','comentariosController@comentarArticulo');
 
-	Route::get('/moderarComentarios','articulosController@moderarComentarios');
+	Route::get('/moderarComentarios','comentariosController@moderarComentarios');
 
-	Route::get('/moderarComentario/{id}','articulosController@moderarComentario');
+	Route::get('/moderarComentario/{id}','comentariosController@moderarComentario');
 
-	Route::post('/actualizarComentario/{id}','articulosController@actualizarComentario');
+	Route::post('/actualizarComentario/{id}','comentariosController@actualizarComentario');
 });
 
 
