@@ -105,4 +105,27 @@ create table comentario(
 );
 
 insert into comentario(contenido,usuario,articulo) values("gran producto",1,1);
+  
+create table pedidos(  
+  id int auto_increment not null,  
+  usuario int not null,
+  articulo int not null,  
+  `created_at` timestamp,
+  `updated_at` timestamp,
+  primary key (id),
+  foreign key (usuario) references users(id),
+  foreign key (articulo) references articulo(codigo)  
+);
+
+create table inventario(  
+  id int auto_increment not null,  
+  articulo int not null,
+  cantidad int not null,  
+  `created_at` timestamp,
+  `updated_at` timestamp,
+  primary key (id),  
+  foreign key (articulo) references articulo(codigo)  
+);
+
+
 	

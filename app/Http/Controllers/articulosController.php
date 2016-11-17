@@ -57,7 +57,10 @@ class articulosController extends Controller
         $nuevo->costo=$datos->input('costo');
         $nuevo->categoria=$datos->input('categoria');
         $nuevo->save();
-        $imagen = $datos->file('imagen')->StoreAs('imagenes/articulos',$nuevo->codigo.'.jpg');
+        if($datos->file('imagen')!=null){
+            $imagen = $datos->file('imagen')->StoreAs('imagenes/articulos',$nuevo->codigo.'.jpg');
+        }
+        
         return Redirect('configurarArticulos');
     } 
 
@@ -78,10 +81,11 @@ class articulosController extends Controller
         $articulo->precio=$datos->input('precio');
         $articulo->descripcion=$datos->input('descripcion');
         $articulo->costo=$datos->input('costo');
-        $articulo->categoria=$datos->input('categoria');
-        $imagen = $datos->file('imagen')->StoreAs('imagenes/articulos', $codigo.'.jpg');                
+        $articulo->categoria=$datos->input('categoria');                       
         $articulo->save();
-
+        if($datos->file('imagen')!=null){
+            $imagen = $datos->file('imagen')->StoreAs('imagenes/articulos',$nuevo->codigo.'.jpg');
+        }
         return Redirect('configurarArticulos');                
     }
 
