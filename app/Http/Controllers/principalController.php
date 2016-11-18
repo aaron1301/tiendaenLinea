@@ -17,6 +17,10 @@ class principalController extends Controller
     	return view('inicio',compact('categorias','articulos_populares'));
     }
 
+    public function carritodeCompras(){
+        return view('carritodeCompra');
+    }
+
     public function administrar(){
     	return view('layouts.administrar');
     }

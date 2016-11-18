@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/moderarComentario/{id}','comentariosController@moderarComentario');
 
 	Route::post('/actualizarComentario/{id}','comentariosController@actualizarComentario');
+
+	Route::get('/carrito','principalController@carritodeCompras');
 });
 
 

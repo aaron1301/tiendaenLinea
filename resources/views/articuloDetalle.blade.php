@@ -1,13 +1,15 @@
 @extends('layouts.principal')
 
-@section('breadcrum')
-<li><a href="{{url('articulosCategoria')}}/{{$categoria->id}}">{{$categoria->nombre}}</a></li>
-<li><a href="{{url('articuloDetalle')}}/{{$articulo->codigo}}">{{$articulo->nombre}}</a></li>
-@endsection
-
 @section ('contenido')
 <div class="container">
 	<div class="row">
+		<div class="breadcrumbs">
+	        <ol class="breadcrumb">
+	        	<li><a href="{{url('inicio')}}">Inicio</a></li>                  
+	        	<li><a href="{{url('articulosCategoria')}}/{{$categoria->id}}">{{$categoria->nombre}}</a></li>
+	        	<li><a href="{{url('articuloDetalle')}}/{{$articulo->codigo}}">{{$articulo->nombre}}</a></li>
+	      </ol>
+	    </div>	
 		<div class="col-sm-9">
 			<div class="product-details">		
 				<div class="col-sm-5">
@@ -58,19 +60,6 @@
 					<div class="tab-pane fade" id="reviews" >
 
 						<div class="col-sm-12" id="comentar">
-							<div>
-								@if(!Auth::guest() && $comentario_usuarioactual==null)						
-								<p><b>Escribe tu comentario</b></p>
-								<form method="POST" action="{{url('/comentarArticulo')}}/{{$articulo->codigo}}">
-									<input type="hidden" name="_token" value="{{csrf_token()}}">								
-									<textarea name="comentario" required></textarea>								
-									<button type="submit" class="btn btn-default pull-right">
-										Comentar
-									</button>
-								</form>							
-								@endif	
-								
-							</div>
 							@foreach($comentarios as $c)
 							<ul>
 								<li><a href=""><i class="fa fa-user"></i>{{$c->name}}</a></li>
@@ -80,7 +69,16 @@
 							<p>{{$c->contenido}}</p>
 							@endforeach
 
-							
+							@if(!Auth::guest() && $comentario_usuarioactual==null)						
+							<p><b>Escribe tu comentario</b></p>
+							<form method="POST" action="{{url('/comentarArticulo')}}/{{$articulo->codigo}}">
+								<input type="hidden" name="_token" value="{{csrf_token()}}">								
+								<textarea name="comentario" required></textarea>								
+								<button type="submit" class="btn btn-default pull-right">
+									Comentar
+								</button>
+							</form>							
+							@endif	
 
 						</div>
 						

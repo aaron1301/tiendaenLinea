@@ -1,13 +1,19 @@
 @extends('layouts.principal')
 
 @section('breadcrum')
-<li><a href="{{url('administrar')}}">Administrar</a></li>                    
+                    
 
 @endsection
 
 @section('contenido')
 
 <div class="container">
+    <div class="breadcrumbs">
+        <ol class="breadcrumb">
+          <li><a href="{{url('inicio')}}">Inicio</a></li>                  
+          <li class="active">Administrar</li>
+      </ol>
+    </div>
     <div class="row">
     @can('acceso_admin')
         <div class="col-sm-3">
@@ -71,20 +77,20 @@
 
         @cannot('acceso_admin')
         <div class="container text-center">
-        <div class="logo-404">
-            <a href="index.html"><img src="imagenes/inicio/logoo.png" alt="" /></a>
-        </div>
-        <div class="content-404">
-            <img src="imagenes/inicio/alto.png" class="img-responsive" alt="" />
-            <h1><b>OPPS!</b> Lo sentimos, usted no es un ADMINISTRADOR</h1>
-            <p>Usted no puede ingresar a esta seccion ya que no tiene credenciales de administrador.</p>
-            <a href="{{url('/inicio')}}"><button type="button" class="btn btn-default get"><h4>Ir a Inicio</h4></button></a>
-        </div>
-        <div class="col-sm-12">
-            <div class="companyinfo">
+            <div class="logo-404">
+                <a href="index.html"><img src="imagenes/inicio/logoo.png" alt="" /></a>
+            </div>
+            <div class="content-404">
+                <img src="imagenes/inicio/alto.png" class="img-responsive" alt="" />
+                <h1><b>OPPS!</b> Lo sentimos, usted no es un ADMINISTRADOR</h1>
+                <p>Usted no puede ingresar a esta seccion ya que no tiene credenciales de administrador.</p>
+                <a href="{{url('/inicio')}}"><button type="button" class="btn btn-default get"><h4>Ir a Inicio</h4></button></a>
+            </div>
+            <div class="col-sm-12">
+                <div class="companyinfo">
+                </div>
             </div>
         </div>
-    </div>
         @endcannot
 
     </div> 

@@ -57,9 +57,9 @@
 									</li>
 									@can('acceso_admin')
 										<li><a href="{{ url('/administrar') }}">Administrar</a></li>
-									@endcan	
+									@endcan										
 								@endif
-								
+								<li><a href="{{url('/carrito')}}"><i class="fa fa-shopping-cart"></i>Carrito</a></li>
 
 							</ul>
 						</div>
@@ -94,15 +94,6 @@
 
 	
 	<section>
-		<div class="container">
-			<div class="row">
-				<ol class="breadcrumb">
-					<li><a href="{{url('inicio')}}">Inicio</a></li>
-					@yield('breadcrum')					
-				</ol>
-			</div>
-		</div>
-
 		@yield('contenido')	
 	</section>
 	
