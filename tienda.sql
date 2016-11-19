@@ -106,7 +106,7 @@ create table comentario(
 
 insert into comentario(contenido,usuario,articulo) values("gran producto",1,1);
   
-create table pedidos(  
+create table pedido(  
   id int auto_increment not null,  
   usuario int not null,
   articulo int not null,  

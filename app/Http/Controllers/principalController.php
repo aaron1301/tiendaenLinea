@@ -17,8 +17,14 @@ class principalController extends Controller
     	return view('inicio',compact('categorias','articulos_populares'));
     }
 
-    public function carritodeCompras(){
-        return view('carritodeCompra');
+    public function carritodeCompras(){        
+        if (session()->has('articulos')){
+            $articulos=session()->get('articulos'); 
+        }else{
+            $articulos=null;
+        }             
+
+        return view('carritodeCompra',compact('articulos'));
     }
 
     public function administrar(){

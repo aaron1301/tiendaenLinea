@@ -23,10 +23,15 @@
 						<p>Codigo: {{$articulo->codigo}}</p>
 						<span>
 							<span>${{$articulo->precio}}</span>
-							<button type="button" class="btn btn-fefault cart">
-								<i class="fa fa-shopping-cart"></i>
-								Comprar
-							</button>
+							<form method="POST" action="{{url('/agregaraCarrito')}}">
+								<input type="hidden" name="_token" value="{{csrf_token()}}">
+								<input type="hidden" name="articulo" value="{{$articulo->codigo}}">						
+								<button type="submit" class="btn btn-fefault cart">
+									<i class="fa fa-shopping-cart"></i>
+									Agregar al Carrito
+								</button>
+							</form>
+							
 						</span>
 						<p><b>Disponibilidad:</b></p>			
 																	
@@ -58,7 +63,6 @@
 					</div>					
 
 					<div class="tab-pane fade" id="reviews" >
-
 						<div class="col-sm-12" id="comentar">
 							@foreach($comentarios as $c)
 							<ul>

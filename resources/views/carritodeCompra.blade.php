@@ -20,21 +20,59 @@
 						</tr>
 					</thead>
 					<tbody>
+						@if($articulos!=null)
+						@foreach($articulos as $a)
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="" alt=""></a>
+								<a href=""><img src="{{asset("imagenes/articulos/$a->codigo.jpg")}}" width="100px"></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">Nombre Producto</a></h4>
-								<p>Codigo</p>
+								<h4><a href="{{url('articuloDetalle')}}/{{$a->codigo}}">{{$a->nombre}}</a></h4>
+								<p>{{$a->codigo}}</p>
 							</td>
 							
 							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
+								<p class="cart_total_price">${{$a->precio}}</p>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
 							</td>
+						</tr>
+						@endforeach
+						@else
+						<tr>
+							<td colspan="4">
+								<center><h2>Su carrito de compra esta vacio</h3></center>
+							</td>
+						</tr>
+						@endif
+						<tr>
+							<td colspan="2">&nbsp;</td>
+							<td colspan="2">
+								<table class="table table-condensed total-result">
+									<tr>
+										<td>Cart Sub Total</td>
+										<td>$59</td>
+									</tr>
+									<tr>
+										<td>IVA</td>
+										<td>$2</td>
+									</tr>
+									<tr class="shipping-cost">
+										<td>Envio</td>
+										<td>Free</td>										
+									</tr>
+									<tr>
+										<td>Total</td>
+										<td><span>$61</span></td>
+
+									</tr>
+
+								</table>
+								<a class="btn btn-default check_out" href="">Completar Pedido</a>	
+							</td>
+
+
 						</tr>		
 						
 					</tbody>
@@ -42,22 +80,5 @@
 			</div>
 		</div>
 	</section>
-
-	<section id="do_action">
-		<div class="container">			
-			<div class="row">				
-				<div class="col-sm-6">
-					<div class="total_area">
-						<ul>
-							<li>Cart Sub Total <span>$59</span></li>
-							<li>IVA <span>$2</span></li>
-							<li>Envio <span>Free</span></li>
-							<li>Total <span>$61</span></li>
-						</ul>							
-							<a class="btn btn-default check_out" href="">Completar Pedido</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> 
+	
 @stop
