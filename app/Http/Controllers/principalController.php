@@ -19,7 +19,7 @@ class principalController extends Controller
 
     public function carritodeCompras(){        
         if (session()->has('articulos')){
-            $articulos=session()->get('articulos'); 
+            $articulos=session()->get('articulos');                                     
         }else{
             $articulos=null;
         }             

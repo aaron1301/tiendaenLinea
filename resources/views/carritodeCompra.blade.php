@@ -5,7 +5,7 @@
 		<div class="container">
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-				  <li><a href="#">Inicio</a></li>
+				  <li><a href="{{url('/inicio')}}">Inicio</a></li>
 				  <li class="active">Carrito de Compra</li>
 				</ol>
 			</div>
@@ -21,7 +21,7 @@
 					</thead>
 					<tbody>
 						@if($articulos!=null)
-						@foreach($articulos as $a)
+						@foreach($articulos as $pos => $a)
 						<tr>
 							<td class="cart_product">
 								<a href=""><img src="{{asset("imagenes/articulos/$a->codigo.jpg")}}" width="100px"></a>
@@ -34,8 +34,11 @@
 							<td class="cart_total">
 								<p class="cart_total_price">${{$a->precio}}</p>
 							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+							<td class="cart_delete">								
+								<form method="POST" action="{{url('/quitardelCarrito')}}/{{$pos}}">
+									<input type="hidden" name="_token" value="{{csrf_token()}}">						
+									<button type="submit" class="cart_quantity_delete"><i class="fa fa-times"></i></button>
+								</form>
 							</td>
 						</tr>
 						@endforeach
@@ -49,7 +52,7 @@
 						<tr>
 							<td colspan="2">&nbsp;</td>
 							<td colspan="2">
-								<table class="table table-condensed total-result">
+								<!-- <table class="table table-condensed total-result">
 									<tr>
 										<td>Cart Sub Total</td>
 										<td>$59</td>
@@ -68,8 +71,11 @@
 
 									</tr>
 
-								</table>
-								<a class="btn btn-default check_out" href="">Completar Pedido</a>	
+								</table> -->
+								<form method="POST" action="{{url('/completarPedido')}}">
+									<input type="hidden" name="_token" value="{{csrf_token()}}">						
+									<button type="submit" class="btn btn-default check_out">Completar Pedido</button>
+								</form>									
 							</td>
 
 

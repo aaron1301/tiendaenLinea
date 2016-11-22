@@ -68,6 +68,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/carrito','principalController@carritodeCompras');
 
 	Route::post('/agregaraCarrito','pedidosController@agregaraCarrito');
+
+	Route::post('/quitardelCarrito/{pos}','pedidosController@quitardelCarrito');
+
+	Route::post('/completarPedido/','pedidosController@completarPedido');
 });
 
 
