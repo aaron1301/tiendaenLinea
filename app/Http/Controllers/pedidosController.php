@@ -12,7 +12,7 @@ class pedidosController extends Controller
     public function agregaraCarrito(Request $datos){
     	$articulo=Articulo::find($datos->input('articulo'));    	
     	$datos->session()->push('articulos',$articulo);    	
-    	return Redirect('/articuloDetalle/'.$articulo->codigo);    	
+    	return Redirect('/carrito');    	
     }
 
     public function quitardelCarrito($pos,Request $datos){

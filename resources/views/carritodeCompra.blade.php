@@ -13,7 +13,7 @@
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
-							<td class="image">Item</td>
+							<td class="image">Articulo</td>
 							<td class="description"></td>
 							<td class="price">Precio</td>							
 							<td></td>
@@ -73,8 +73,13 @@
 
 								</table> -->
 								<form method="POST" action="{{url('/completarPedido')}}">
-									<input type="hidden" name="_token" value="{{csrf_token()}}">						
+									<input type="hidden" name="_token" value="{{csrf_token()}}">
+									@if(session()->has('articulos'))						
 									<button type="submit" class="btn btn-default check_out">Completar Pedido</button>
+									@else
+									<button type="submit" class="btn btn-default check_out" disabled="true">Completar Pedido</button>
+									@endif
+
 								</form>									
 							</td>
 

@@ -38,15 +38,10 @@
 									<div class="overlay-content">
 										<h2>${{$a->precio}}</h2>
 										<p>{{$a->nombre}}</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Comprar</a>
+										<a href="{{url('articuloDetalle')}}/{{$a->codigo}}" class="btn btn-default add-to-cart">Ver Más</a>
 									</div>
 								</div>
-							</div>
-							<div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href="{{url('articuloDetalle')}}/{{$a->codigo}}"><i class="fa fa-plus-square"></i>Ver Informacion</a></li>
-								</ul>
-							</div>			
+							</div>									
 						</div>
 					</div>
 				@endforeach				
