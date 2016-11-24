@@ -25,15 +25,28 @@
 							<span>${{$articulo->precio}}</span>
 							<form method="POST" action="{{url('/agregaraCarrito')}}">
 								<input type="hidden" name="_token" value="{{csrf_token()}}">
-								<input type="hidden" name="articulo" value="{{$articulo->codigo}}">						
-								<button type="submit" class="btn btn-fefault cart">
+								<input type="hidden" name="articulo" value="{{$articulo->codigo}}">
+								@if($inventario->cantidad==0)						
+									<button type="submit" class="btn btn-fefault cart" disabled>
+										<i class="fa fa-shopping-cart"></i>
+										Agregar al Carrito
+									</button>
+								@else
+									<button type="submit" class="btn btn-fefault cart">
 									<i class="fa fa-shopping-cart"></i>
 									Agregar al Carrito
-								</button>
+									</button>
+								@endif
 							</form>
 							
 						</span>
-						<p><b>Disponibilidad:</b></p>			
+						<p><b>Disponibilidad:</b>
+						@if($inventario->cantidad==0)
+							No disponible por el momento
+						@else
+							Disponible
+						@endif
+						</p>			
 																	
 					</div>					
 					

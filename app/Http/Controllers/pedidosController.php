@@ -30,7 +30,7 @@ class pedidosController extends Controller
     		$nuevo_pedido->articulo=$a->codigo;
     		$nuevo_pedido->save();
     	}
-        $datos->session()->flush();
+        $datos->session()->forget('articulos');
         return view('pedidoExitoso'); 
 
     }

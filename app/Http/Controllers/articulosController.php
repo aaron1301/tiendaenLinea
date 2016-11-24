@@ -9,6 +9,7 @@ use App\Categoria;
 use App\Calificacion;
 use App\Comentario;
 use App\User;
+use App\Inventario;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
@@ -28,7 +29,8 @@ class articulosController extends Controller
     }
 
     public function articuloDetalle($codigo){
-   		$articulo=Articulo::find($codigo);   		
+   		$articulo=Articulo::find($codigo);
+        $inventario=Inventario::find($codigo);   		
         $categoria=Categoria::find($articulo->categoria);
         $comentarios=Comentario::where('articulo',$codigo)
         ->join('users','users.id','=','usuario')
@@ -46,7 +48,7 @@ class articulosController extends Controller
         } catch (ModelNotFoundException $e) {
             $comentario_usuarioactual=null;
         }
-    	return view('articuloDetalle', compact('articulo','categoria','calificacion','comentarios','comentario_usuarioactual'));
+    	return view('articuloDetalle', compact('articulo','categoria','calificacion','comentarios','comentario_usuarioactual','inventario'));
     }
 
     public function nuevoArticulo(Request $datos){

@@ -23,25 +23,23 @@ create table articulo(
 	foreign key(categoria) references categoria(id)	
 	);
 
-create table inventario(  
-  id int auto_increment not null,  
-  articulo int not null,
+create table inventario(    
+  id int not null,
   cantidad int not null,  
   `created_at` timestamp,
   `updated_at` timestamp,
   primary key (id),  
-  foreign key (articulo) references articulo(codigo)  
+  foreign key (id) references articulo(codigo)  
 );
 
 delimiter |
 create trigger iniciarinventario after insert on articulo
   for each row
   begin
-    insert into inventario(articulo,cantidad) values(new.codigo,5);
+    insert into inventario(id,cantidad) values(new.codigo,5);
   end;
 |
 delimiter ;
-
 
 create table users(  
   id int auto_increment not null,
@@ -104,6 +102,14 @@ create table pedido(
   foreign key (articulo) references articulo(codigo)  
 );
 
+delimiter |
+create trigger restarinventario after insert on pedido
+  for each row
+  begin        
+    update inventario set cantidad = cantidad - 1 where new.articulo = id; 
+  end;
+|
+delimiter ;
 
 insert into categoria(nombre,descripcion) values("Celulares","Los mejores equipos para todos los miembros de la familia, elige el que se adapte mejor a tus necesidades.");
 insert into categoria(nombre,descripcion) values("Accesorios","Si se te descompuso o te hace falta algo nuevo para tus equipos nosotros tenemos todo tipo de accesorios");
@@ -136,6 +142,9 @@ insert into users(name,direccion,telefono,fecha_nacimiento,email,password,admini
 insert into users(name,direccion,telefono,fecha_nacimiento,email,password,administrador) values("Ernesto Gutierrez","La Cruz Elota",1051429,'1993-06-17',"cesar_170693@hotmail.com","$2y$10$EnL.OZU01JbodT3qulO7qObA99bIN4RJrNtONPHYakJT6kOl7aEIK",false);
 
 insert into comentario(contenido,usuario,articulo) values("gran producto",1,1);
+insert into calificacion(usuario,articulo,valor) values(1,3,8);
+insert into calificacion(usuario,articulo,valor) values(1,4,9);
+insert into calificacion(usuario,articulo,valor) values(2,5,7);  
 
 
 	
