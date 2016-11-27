@@ -36,27 +36,13 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Mantenerme conectado
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        </div>                      
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Ingresar
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Olvidaste tu contraseña?
-                                </a>
+                                </button>                                
                             </div>
                         </div>
                     </form>

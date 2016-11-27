@@ -86,7 +86,7 @@ class articulosController extends Controller
         $articulo->categoria=$datos->input('categoria');                       
         $articulo->save();
         if($datos->file('imagen')!=null){
-            $imagen = $datos->file('imagen')->StoreAs('imagenes/articulos',$nuevo->codigo.'.jpg');
+            $imagen = $datos->file('imagen')->StoreAs('imagenes/articulos',$articulo->codigo.'.jpg');
         }
         return Redirect('configurarArticulos');                
     }

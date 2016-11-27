@@ -2,7 +2,6 @@
 
 @section ('contenido')
 <section id="slider"><!--carrucel inicio-->
-
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
@@ -14,15 +13,14 @@
 					@endforeach
 					</ol>
 					<div class="carousel-inner">
-
 						<div class="item active">
 							<div class="col-sm-6">
 								<h1><span>Tienda</span> En Linea</h1>
 								<h2>Bienvenido</h2>
-								<p>La tienda en linea le facilitará la forma en que realiza compras de distintos articulos desd la comodidad de su hogar</p>
+								<p>La tienda en linea le facilitará la forma en que realiza compras de distintos articulos desde la comodidad de su hogar</p>
 							</div>
 							<div class="col-sm-6">
-								<img src="{{asset("imagenes/inicio/bienvenida.jpg")}}" class="girl img-responsive" alt="" />	<img src=""  class="pricing" alt="" />
+								<img src="{{asset("imagenes/inicio/bienvenida.jpg")}}" class="girl img-responsive">
 							</div>
 						</div>
 
@@ -32,11 +30,10 @@
 								<h1><span>Tienda</span> En Linea</h1>
 								<h2>{{$cate->nombre}}</h2>
 								<p>{{$cate->descripcion}}</p>
-								<a href="{{url('articulosCategoria')}}/{{$cate->id}}"><button type="button" class="btn btn-default get">¡Ver Más!</button></a>
+								<a href="{{url('articulosCategoria')}}/{{$cate->id}}" type="button" class="btn btn-default get">¡Ver Más!</a>
 							</div>
 							<div class="col-sm-6">
-								<img src="{{asset("imagenes/categorias/$cate->id.jpg")}}" class="girl img-responsive" alt="" />
-								<img src=""  class="pricing" alt="" />
+								<img  src="{{asset("imagenes/categorias/$cate->id.jpg")}}" class="girl img-responsive">								
 							</div>
 						</div>
 						@endforeach

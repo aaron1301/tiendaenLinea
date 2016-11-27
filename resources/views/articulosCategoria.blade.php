@@ -1,12 +1,14 @@
 @extends('layouts.principal')
 
-@section('breadcrum')
-<li><a href="{{url('articulosCategoria')}}/{{$categoria->id}}">{{$categoria->nombre}}</a></li>
-@endsection
-
 @section ('contenido')
 <div class="container">
 	<div class="row">
+		<div class="breadcrumbs">
+	        <ol class="breadcrumb">
+	        	<li><a href="{{url('inicio')}}">Inicio</a></li>                  
+	        	<li><a href="{{url('articulosCategoria')}}/{{$categoria->id}}">{{$categoria->nombre}}</a></li>	        	
+	      </ol>
+	    </div>	
 		<div class="col-sm-3">
 			<div class="left-sidebar">
 				<h2>Categorias</h2>
@@ -30,7 +32,7 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="{{asset("imagenes/articulos/$a->codigo.jpg")}}" alt="">
+									<img src="{{asset("imagenes/articulos/$a->codigo.jpg")}}">
 									<h2>${{$a->precio}}</h2>
 									<p>{{$a->nombre}}</p>
 								</div>
