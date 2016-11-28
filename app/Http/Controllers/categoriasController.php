@@ -23,7 +23,9 @@ class categoriasController extends Controller
         $categoria->nombre=$datos->input('nombre');
         $categoria->descripcion=$datos->input('descripcion');
         $categoria->save();
-        $imagen = $datos->file('imagen')->StoreAs('imagenes/categorias',$categoria->id.'.jpg');
+         if($datos->file('imagen')!=null){
+            $imagen = $datos->file('imagen')->StoreAs('imagenes/categorias',$categoria->id.'.jpg');
+        }
 
         return Redirect('configurarCategorias'); 
     }
@@ -33,7 +35,9 @@ class categoriasController extends Controller
         $nuevo->nombre=$datos->input('nombre');
         $nuevo->descripcion=$datos->input('descripcion');
         $nuevo->save();
-        $imagen = $datos->file('imagen')->StoreAs('imagenes/categorias',$nuevo->id.'.jpg');
+        if($datos->file('imagen')!=null){
+            $imagen = $datos->file('imagen')->StoreAs('imagenes/categorias',$nuevo->id.'.jpg');
+        }
 
         return Redirect('configurarCategorias');
     } 
