@@ -6,7 +6,7 @@ create table categoria(
 	nombre varchar(50) not null,
   descripcion varchar(500) not null,
 	created_at timestamp not null,
-	updated_at timestamp not null,
+	updated_at timestamp DEFAULT '1970-01-01 00:00:01',
 	primary key(id)	
 	);
 
@@ -18,7 +18,7 @@ create table articulo(
 	costo decimal(10,2) not null,
 	categoria int not null,
 	created_at timestamp not null,
-	updated_at timestamp not null,
+	updated_at timestamp DEFAULT '1970-01-01 00:00:01',
 	primary key(codigo),
 	foreign key(categoria) references categoria(id)	
 	);
@@ -27,7 +27,7 @@ create table inventario(
   id int not null,
   cantidad int not null,  
   `created_at` timestamp,
-  `updated_at` timestamp,
+  `updated_at` timestamp DEFAULT '1970-01-01 00:00:01',
   primary key (id),  
   foreign key (id) references articulo(codigo)  
 );
@@ -52,7 +52,7 @@ create table users(
   administrador boolean default false,
   remember_token varchar(100),
   `created_at` timestamp,
-  `updated_at` timestamp,
+  `updated_at` timestamp DEFAULT '1970-01-01 00:00:01',
   primary key (id),
   unique key(email)
 );
@@ -71,7 +71,7 @@ create table calificacion(
   usuario int not null,
   articulo int not null,  
   `created_at` timestamp,
-  `updated_at` timestamp,
+  `updated_at` timestamp DEFAULT '1970-01-01 00:00:01',
   primary key (id),
   foreign key (usuario) references users(id),
   foreign key (articulo) references articulo(codigo),
@@ -84,7 +84,7 @@ create table comentario(
   usuario int not null,
   articulo int not null,  
   `created_at` timestamp,
-  `updated_at` timestamp,
+  `updated_at` timestamp DEFAULT '1970-01-01 00:00:01',
   primary key (id),
   foreign key (usuario) references users(id),
   foreign key (articulo) references articulo(codigo),
@@ -96,7 +96,7 @@ create table pedido(
   usuario int not null,
   articulo int not null,  
   `created_at` timestamp,
-  `updated_at` timestamp,
+  `updated_at` timestamp DEFAULT '1970-01-01 00:00:01',
   primary key (id),
   foreign key (usuario) references users(id),
   foreign key (articulo) references articulo(codigo)  
