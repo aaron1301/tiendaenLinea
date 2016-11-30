@@ -70,6 +70,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/quitardelCarrito/{pos}','pedidosController@quitardelCarrito');
 
 	Route::post('/completarPedido/','pedidosController@completarPedido');
+
+	Route::get('/verPedidos','pedidosController@verPedidos');
+
+	Route::get('/verPedido/{id}','pedidosController@verPedido');
 });
 
 

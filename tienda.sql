@@ -84,17 +84,26 @@ create table comentario(
   
 create table pedido(  
   id int auto_increment not null,  
-  usuario int not null,
+  usuario int not null,    
+  `created_at` timestamp default now(),
+  `updated_at` timestamp default now(),
+  primary key (id),
+  foreign key (usuario) references users(id)    
+);
+
+create table pedidoDetalle(  
+  id int auto_increment not null,  
+  pedido int not null,
   articulo int not null,  
   `created_at` timestamp default now(),
   `updated_at` timestamp default now(),
   primary key (id),
-  foreign key (usuario) references users(id),
+  foreign key (pedido) references pedido(id),
   foreign key (articulo) references articulo(codigo)  
 );
 
 delimiter |
-create trigger restarinventario after insert on pedido
+create trigger restarinventario after insert on pedidoDetalle
   for each row
   begin        
     update inventario set cantidad = cantidad - 1 where new.articulo = id; 

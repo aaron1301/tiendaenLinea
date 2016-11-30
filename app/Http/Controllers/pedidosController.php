@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Articulo;
 use App\Pedido;
+use App\PedidoDetalle;
 
 class pedidosController extends Controller
 {
@@ -24,15 +25,28 @@ class pedidosController extends Controller
 
     public function completarPedido(Request $datos){
     	$articulos=session()->get('articulos');
+        $nuevo_pedido=new Pedido;
+        $nuevo_pedido->usuario=$datos->user()->id;
+        $nuevo_pedido->save();
     	foreach($articulos as $a){
-    		$nuevo_pedido=new Pedido;
-    		$nuevo_pedido->usuario=$datos->user()->id;
-    		$nuevo_pedido->articulo=$a->codigo;
-    		$nuevo_pedido->save();
+            $nuevo_pedidoDetalle=new PedidoDetalle;
+            $nuevo_pedidoDetalle->pedido=$nuevo_pedido->id;    		
+    		$nuevo_pedidoDetalle->articulo=$a->codigo;
+    		$nuevo_pedidoDetalle->save();
     	}
         $datos->session()->forget('articulos');
-        return view('pedidoExitoso'); 
+        return view('pedidoExitoso');
+    }
 
+    public function verPedidos(){
+        $pedidos=Pedido::all();
+        return view('verPedidos',compact('pedidos'));
+    }
+
+    public function verPedido($id){
+        $pedidos=PedidoDetalle::where('pedido',$id)
+        ->get();
+        return view('verPedido',compact('pedidos'));
     }
 
 }
