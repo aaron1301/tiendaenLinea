@@ -59,6 +59,10 @@ class articulosController extends Controller
         $nuevo->costo=$datos->input('costo');
         $nuevo->categoria=$datos->input('categoria');
         $nuevo->save();
+        $inventario = new Inventario;
+        $inventario->id=$nuevo->codigo;
+        $inventario->cantidad=$datos->input('cantidad');
+        $inventario->save();
         if($datos->file('imagen')!=null){
             $imagen = $datos->file('imagen')->StoreAs('imagenes/articulos',$nuevo->codigo.'.jpg');
         }
@@ -74,7 +78,8 @@ class articulosController extends Controller
     public function configArticulo($codigo){
         $articulo = Articulo::find($codigo);
         $categorias = Categoria::all();
-        return view('configArticulo',compact('articulo','categorias'));
+        $inventario = Inventario::find($codigo);        
+        return view('configArticulo',compact('articulo','categorias','inventario'));
     }
 
     public function actualizarArticulo($codigo, Request $datos){
@@ -112,6 +117,10 @@ class articulosController extends Controller
             $nuevo->costo=$a["costo"];
             $nuevo->categoria=$a["categoria"];
             $nuevo->save();
+            $inventario = new Inventario;
+            $inventario->id=$nuevo->codigo;
+            $inventario->cantidad=$a["cantidad"];
+            $inventario->save();
         }
         return Redirect('/configurarArticulos');
         

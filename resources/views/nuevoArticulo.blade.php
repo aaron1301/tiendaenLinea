@@ -44,6 +44,12 @@
                     </select>                               
                 </div>
             </div>
+            <div class="form-group">
+                <label for="cantidad" class="col-md-4 control-label">Cantidad en Inventario:</label>
+                <div class="col-md-6">
+                    <input name="cantidad" type="number" class="form-control" required>                                
+                </div>                            
+            </div>
 
             <div class="form-group">
                 <label for="imagen" class="col-md-4 control-label">Imagen</label>

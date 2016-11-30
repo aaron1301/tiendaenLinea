@@ -5,8 +5,8 @@ create table categoria(
 	id int auto_increment not null,	
 	nombre varchar(50) not null,
   descripcion varchar(500) not null,
-	created_at timestamp not null,
-	updated_at timestamp DEFAULT '1970-01-01 00:00:01',
+	created_at timestamp default now(),
+	updated_at timestamp default now(),
 	primary key(id)	
 	);
 
@@ -17,8 +17,8 @@ create table articulo(
 	descripcion varchar(500),
 	costo decimal(10,2) not null,
 	categoria int not null,
-	created_at timestamp not null,
-	updated_at timestamp DEFAULT '1970-01-01 00:00:01',
+	created_at timestamp default now(),
+	updated_at timestamp default now(),
 	primary key(codigo),
 	foreign key(categoria) references categoria(id)	
 	);
@@ -26,20 +26,11 @@ create table articulo(
 create table inventario(    
   id int not null,
   cantidad int not null,  
-  `created_at` timestamp,
-  `updated_at` timestamp DEFAULT '1970-01-01 00:00:01',
+  `created_at` timestamp default now(),
+  `updated_at` timestamp default now(),
   primary key (id),  
   foreign key (id) references articulo(codigo)  
 );
-
-delimiter |
-create trigger iniciarinventario after insert on articulo
-  for each row
-  begin
-    insert into inventario(id,cantidad) values(new.codigo,5);
-  end;
-|
-delimiter ;
 
 create table users(  
   id int auto_increment not null,
@@ -51,8 +42,8 @@ create table users(
   password varchar(255) not null,
   administrador boolean default false,
   remember_token varchar(100),
-  `created_at` timestamp,
-  `updated_at` timestamp DEFAULT '1970-01-01 00:00:01',
+  `created_at` timestamp default now(),
+  `updated_at` timestamp default now(),
   primary key (id),
   unique key(email)
 );
@@ -60,7 +51,7 @@ create table users(
 create table password_resets(
   email varchar(255) not null,
   token varchar(255) not null,
-  created_at timestamp,
+  created_at  timestamp default now(),
   key(email),
   key(token) 
 );
@@ -70,8 +61,8 @@ create table calificacion(
   valor int  not null,
   usuario int not null,
   articulo int not null,  
-  `created_at` timestamp,
-  `updated_at` timestamp DEFAULT '1970-01-01 00:00:01',
+  `created_at` timestamp default now(),
+  `updated_at` timestamp default now(),
   primary key (id),
   foreign key (usuario) references users(id),
   foreign key (articulo) references articulo(codigo),
@@ -83,8 +74,8 @@ create table comentario(
   contenido varchar(255)  not null,
   usuario int not null,
   articulo int not null,  
-  `created_at` timestamp,
-  `updated_at` timestamp DEFAULT '1970-01-01 00:00:01',
+  `created_at` timestamp default now(),
+  `updated_at` timestamp default now(),
   primary key (id),
   foreign key (usuario) references users(id),
   foreign key (articulo) references articulo(codigo),
@@ -95,8 +86,8 @@ create table pedido(
   id int auto_increment not null,  
   usuario int not null,
   articulo int not null,  
-  `created_at` timestamp,
-  `updated_at` timestamp DEFAULT '1970-01-01 00:00:01',
+  `created_at` timestamp default now(),
+  `updated_at` timestamp default now(),
   primary key (id),
   foreign key (usuario) references users(id),
   foreign key (articulo) references articulo(codigo)  
@@ -136,6 +127,14 @@ insert into articulo(nombre,precio,costo,categoria) values("Asus Z580C-B1-BK",39
 insert into articulo(nombre,precio,costo,categoria) values("Huawei Mate 8",10001,9000,1);
 insert into articulo(nombre,precio,costo,categoria) values("OnePlus 3",11000,10000,1); 
 insert into articulo(nombre,precio,costo,categoria) values("Audiculares",5000,3000,2);
+
+insert into inventario(id,cantidad) values(1,50);
+insert into inventario(id,cantidad) values(2,100);  
+insert into inventario(id,cantidad) values(3,20);  
+insert into inventario(id,cantidad) values(4,40);
+insert into inventario(id,cantidad) values(5,100);
+insert into inventario(id,cantidad) values(6,80);
+insert into inventario(id,cantidad) values(7,1);    
 
 insert into users(name,direccion,telefono,fecha_nacimiento,email,password,administrador) values("Aaron Velazquez","Por ahi",7280311,'1993-01-13',"aaron630m@gmail.com","$2y$10$kBtlyj7zO9L9iJFQgkyvY.jaCkWBrzAoCi8fmSfVa.BZ7kinRxQaG",true);
 insert into users(name,direccion,telefono,fecha_nacimiento,email,password,administrador) values("César Manjarrez Admin","La Cruz Elota",1051429,'1993-06-17',"cesar63549@gmail.com","$2y$10$uJLx1tnOF5uv7opFZCiyHO7uboe1D9K6ZMshSomoJ.IXO86WkE5PG",true);

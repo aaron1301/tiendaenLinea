@@ -49,6 +49,13 @@
             </div>
 
             <div class="form-group">
+                <label for="cantidad" class="col-md-4 control-label">Cantidad en Inventario:</label>
+                <div class="col-md-6">
+                    <input name="cantidad" type="number" class="form-control" value="{{$inventario->cantidad}}" required>                                
+                </div>                            
+            </div>
+
+            <div class="form-group">
                 <label for="imagen" class="col-md-4 control-label">Imagen</label>
                 <div class="col-md-6">
                     <input name="imagen" type="file" class="form-control" accept="image/jpg">                                
