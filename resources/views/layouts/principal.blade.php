@@ -44,6 +44,11 @@
 
 										<ul class="dropdown-menu" role="menu">
 											<li>
+												<a href="{{url('/verPerfil')}}/{{Auth::user()->id}}">
+													Ver Mi Perfil
+												</a>
+											</li>
+											<li>
 												<a href="{{ url('/logout') }}"
 												onclick="event.preventDefault();
 												document.getElementById('logout-form').submit();">
@@ -53,7 +58,7 @@
 												<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
 													{{ csrf_field() }}
 												</form>
-											</li>
+											</li>											
 										</ul>
 									</li>
 									@can('acceso_admin')

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Categoria;
 use App\Articulo;
+use App\User;
+use Illuminate\Support\Facades\Gate;
 use DB;
 
 class principalController extends Controller
@@ -42,5 +44,16 @@ class principalController extends Controller
 
     public function nuevaCategoria(){
         return view('nuevaCategoria');
+    }
+
+    public function verPerfil($id){
+        $usuario=User::find($id);
+        if (Gate::allows('ver_perfil', $id)){
+           return view('perfil',compact('usuario')); 
+        }else{
+            return view('accesoDenegado');
+        }
+
+        
     }
 }

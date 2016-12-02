@@ -74,6 +74,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/verPedidos','pedidosController@verPedidos');
 
 	Route::get('/verPedido/{id}','pedidosController@verPedido');
+
+	Route::get('/verPerfil/{id}','principalController@verPerfil');
 });
 
 
