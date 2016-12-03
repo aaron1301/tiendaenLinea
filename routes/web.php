@@ -67,9 +67,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('/agregaraCarrito','pedidosController@agregaraCarrito');
 
-	Route::post('/quitardelCarrito/{pos}','pedidosController@quitardelCarrito');
+	Route::get('/quitardelCarrito/{id}','pedidosController@quitardelCarrito');
 
-	Route::post('/completarPedido/','pedidosController@completarPedido');
+	Route::get('/finalizarCompra','pedidosController@finalizarCompra');
+
+	Route::post('/realizarPago','pedidosController@finalizarPago');
 
 	Route::get('/verPedidos','pedidosController@verPedidos');
 

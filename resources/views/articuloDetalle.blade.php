@@ -10,36 +10,37 @@
 	        	<li><a href="{{url('articuloDetalle')}}/{{$articulo->codigo}}">{{$articulo->nombre}}</a></li>
 	      </ol>
 	    </div>	
-		<div class="col-sm-9">
+		<div class="col-sm-12">
 			<div class="product-details">		
-				<div class="col-sm-5">
+				<div class="col-sm-4">
 					<div class="view-product">
 						<img src="{{asset("imagenes/articulos/$articulo->codigo.jpg")}}" alt="" />
 					</div>
 				</div>
-				<div class="col-sm-7">
-					<div class="product-information"><!--/product-information-->
+				<div class="col-sm-8">
+					<div class="product-information">
+						<form id="form1" method="POST" action="{{url('/agregaraCarrito')}}">
+							<input type="hidden" name="_token" value="{{csrf_token()}}">							
+							<input type="hidden" name="articulo" value="{{$articulo->codigo}}">							
+						</form>
 						<h2>{{$articulo->nombre}}</h2>
 						<p>Codigo: {{$articulo->codigo}}</p>
 						<span>
 							<span>${{$articulo->precio}}</span>
-							<form method="POST" action="{{url('/agregaraCarrito')}}">
-								<input type="hidden" name="_token" value="{{csrf_token()}}">
-								<input type="hidden" name="articulo" value="{{$articulo->codigo}}">
-								@if($inventario->cantidad==0)						
-									<button type="submit" class="btn btn-fefault cart" disabled>
-										<i class="fa fa-shopping-cart"></i>
-										Agregar al Carrito
-									</button>
-								@else
-									<button type="submit" class="btn btn-fefault cart">
-									<i class="fa fa-shopping-cart"></i>
-									Agregar al Carrito
-									</button>
-								@endif
-							</form>
-							
-						</span>
+							<label>Cantidad:</label>
+							<input type="number" name="cantidad" min="1" max="{{$inventario->cantidad}}" value="1" form="form1">
+							@if($inventario->cantidad==0)						
+							<button type="submit" class="btn btn-fefault cart" form="form1">
+								<i class="fa fa-shopping-cart"></i>
+								Añadir al Carrito
+							</button>
+							@else
+							<button type="submit" class="btn btn-fefault cart" form="form1">
+								<i class="fa fa-shopping-cart"></i>
+								Añadir al Carrito
+							</button>
+							@endif
+						</span>						
 						<p><b>Disponibilidad:</b>
 						@if($inventario->cantidad==0)
 							No disponible por el momento
@@ -55,12 +56,9 @@
 			</div>
 			
 		</div>
+		
 
-		<div class="col-sm-9">
-
-		</div>
-
-		<div class="col-sm-9">
+		<div class="col-sm-12">
 			<div class="category-tab shop-details-tab">
 				<div class="col-sm-12">
 					<ul class="nav nav-tabs">
@@ -101,10 +99,9 @@
 						
 					</div>
 
-
 					<div class="tab-pane fade" id="calificar" >
 						@if(!Auth::guest())
-						<div class="col-md-4">
+						<div class="col-md-2">
 							<form class="form-horizontal" method="POST" action="{{url('/calificarArticulo')}}/{{$articulo->codigo}}">
 								<input type="hidden" name="_token" value="{{csrf_token()}}">
 								<select name="calificacion" required>
@@ -119,7 +116,7 @@
 										@endif
 									@endfor
 								</select>
-								<button type="submit" class="btn btn-primary">Calificar</button>								
+								<button type="submit" class="btn btn-primary">Calificar</button>							
 							</form>
 						</div>	
 						@endif

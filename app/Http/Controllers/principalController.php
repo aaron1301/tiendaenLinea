@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Categoria;
 use App\Articulo;
 use App\User;
@@ -19,12 +20,10 @@ class principalController extends Controller
     	return view('inicio',compact('categorias','articulos_populares'));
     }
 
-    public function carritodeCompras(){        
-        if (session()->has('articulos')){
-            $articulos=session()->get('articulos');                                     
-        }else{
-            $articulos=null;
-        }             
+    public function carritodeCompras(){
+        $articulos=Articulo::join('carrito','codigo',"=",'carrito.articulo')
+        ->where('usuario',Auth::id())
+        ->get();       
 
         return view('carritodeCompra',compact('articulos'));
     }

@@ -81,10 +81,24 @@ create table comentario(
   foreign key (articulo) references articulo(codigo),
   unique key(usuario,articulo)
 );
+
+create table carrito(  
+  id int auto_increment not null,  
+  usuario int not null,
+  articulo int not null,
+  cantidad int not null,  
+  `created_at` timestamp default now(),
+  `updated_at` timestamp default now(),
+  primary key (id),
+  foreign key (usuario) references users(id),
+  foreign key (articulo) references articulo(codigo),
+  unique key(usuario,articulo)  
+);
   
 create table pedido(  
   id int auto_increment not null,  
-  usuario int not null,    
+  usuario int not null,
+  direccion int not null,    
   `created_at` timestamp default now(),
   `updated_at` timestamp default now(),
   primary key (id),
@@ -94,12 +108,14 @@ create table pedido(
 create table pedidoDetalle(  
   id int auto_increment not null,  
   pedido int not null,
-  articulo int not null,  
+  articulo int not null,
+  cantidad int not null,  
   `created_at` timestamp default now(),
   `updated_at` timestamp default now(),
   primary key (id),
   foreign key (pedido) references pedido(id),
-  foreign key (articulo) references articulo(codigo)  
+  foreign key (articulo) references articulo(codigo),
+  unique key(articulo)  
 );
 
 delimiter |
