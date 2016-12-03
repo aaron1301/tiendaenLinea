@@ -28,30 +28,32 @@ class pedidosController extends Controller
         return Redirect('/carrito');
     }
 
-    public function finalizarCompra(){
+    public function finalizarCompra(Request $datos){
         $usuario=Auth::user();
-    	return view('pago',compact('usuario'));        
+        $total=$datos->input('total');
+    	return view('pago',compact('usuario','total'));        
     }
 
     public function realizarPago(Request $datos){
         $usuario=$datos->user()->id;
         $direccion=$datos->input('direccion');
-        $this->crearPedido($usuario,$direccion);        
+        $total=$datos->input('total');
+        $this->crearPedido($usuario,$direccion,$total);        
         return view('pedidoExitoso');
     }
 
-    public function crearPedido($usuario,$direccion){
-        $articulos=Carrito::join('articulo','carrito.articulo',"=",'codigo')
-        ->where('usuario',$usuario)
+    public function crearPedido($usuario,$direccion,$total){
+        $articulos=Carrito::where('usuario',$usuario)
         ->get();
         $nuevo_pedido=new Pedido;
         $nuevo_pedido->usuario=$usuario;
         $nuevo_pedido->direccion=$direccion;
+        $nuevo_pedido->total=$total;
         $nuevo_pedido->save();
         foreach($articulos as $a){
             $nuevo_pedidoDetalle=new PedidoDetalle;
             $nuevo_pedidoDetalle->pedido=$nuevo_pedido->id;         
-            $nuevo_pedidoDetalle->articulo=$a->codigo;
+            $nuevo_pedidoDetalle->articulo=$a->articulo;
             $nuevo_pedidoDetalle->cantidad=$a->cantidad;
             $nuevo_pedidoDetalle->save();
             $a->delete();

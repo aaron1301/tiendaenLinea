@@ -23,9 +23,13 @@ class principalController extends Controller
     public function carritodeCompras(){
         $articulos=Articulo::join('carrito','codigo',"=",'carrito.articulo')
         ->where('usuario',Auth::id())
-        ->get();       
+        ->get();
+        $total=0;
+        foreach ($articulos as $a) {
+            $total=$total+($a->cantidad*$a->precio);
+        }       
 
-        return view('carritodeCompra',compact('articulos'));
+        return view('carritodeCompra',compact('articulos','total'));
     }
 
     public function administrar(){

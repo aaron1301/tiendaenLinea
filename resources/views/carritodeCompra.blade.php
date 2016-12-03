@@ -47,7 +47,7 @@
 								</td>
 								
 								<td class="cart_total">
-									<p class="cart_total_price"></p>
+									<p class="cart_total_price">${{$a->precio*$a->cantidad}}</p>
 								</td>
 								<td class="cart_delete">
 									<a class="cart_quantity_delete" href="{{url('/quitardelCarrito')}}/{{$a->id}}"><i class="fa fa-times"></i></a>								
@@ -62,31 +62,31 @@
 						</tr>
 						@endif
 						<tr>
-							<td colspan="2">&nbsp;</td>
+							<td colspan="4">&nbsp;</td>
 							<td colspan="2">
-								<!-- <table class="table table-condensed total-result">
+								<table class="table table-condensed total-result">
 									<tr>
-										<td>Cart Sub Total</td>
-										<td>$59</td>
-									</tr>
-									<tr>
-										<td>IVA</td>
-										<td>$2</td>
-									</tr>
+										<td>Subtotal</td>
+										<td>${{$total}}</td>
+									</tr>									
 									<tr class="shipping-cost">
 										<td>Envio</td>
-										<td>Free</td>										
+										<td>Gratis</td>										
 									</tr>
 									<tr>
 										<td>Total</td>
-										<td><span>$61</span></td>
+										<td><span>${{$total}}</span></td>
 
 									</tr>
 
-								</table> -->								
+								</table>								
 								
-								@if(!$articulos->isEmpty())								
-									<a class="btn btn-default check_out" href="{{url('/finalizarCompra')}}">Finalizar Compra</a>
+								@if(!$articulos->isEmpty())
+								<form class="form-action" id="form1" method="POST" action="{{url('/finalizarCompra')}}">
+									<input type="hidden" name="_token" value="{{csrf_token()}}">
+									<input type="hidden" name="total" value="{{$total}}">	
+									<input type="submit" class="btn btn-default check_out" value="Finalizar Compra">
+								</form>									
 								@endif									
 							</td>
 

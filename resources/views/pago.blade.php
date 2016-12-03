@@ -19,7 +19,8 @@
 				<div class="col-sm-3">
 					<div >
 						<p>Shopper Information</p>
-						<form class="form-action" id="form1" method="POST" action="{{url('realizarPago')}}">						<input type="hidden" name="_token" value="{{csrf_token()}}">	
+						<form class="form-action" id="form1" method="POST" action="{{url('realizarPago')}}">						<input type="hidden" name="_token" value="{{csrf_token()}}">
+							<input type="hidden" name="total" value="{{$total}}">	
 							<input type="text" name="direccion" placeholder="Direccion" value="{{$usuario->direccion}}" required>													
 						</form>						
 					</div>

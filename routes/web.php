@@ -69,7 +69,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/quitardelCarrito/{id}','pedidosController@quitardelCarrito');
 
-	Route::get('/finalizarCompra','pedidosController@finalizarCompra');
+	Route::post('/finalizarCompra','pedidosController@finalizarCompra');
 
 	Route::post('/realizarPago','pedidosController@realizarPago');
 

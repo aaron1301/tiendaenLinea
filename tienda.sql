@@ -98,7 +98,8 @@ create table carrito(
 create table pedido(  
   id int auto_increment not null,  
   usuario int not null,
-  direccion varchar(50) not null,    
+  direccion varchar(50) not null,
+  total decimal(10,2) not null,    
   `created_at` timestamp default now(),
   `updated_at` timestamp default now(),
   primary key (id),
@@ -114,8 +115,7 @@ create table pedidoDetalle(
   `updated_at` timestamp default now(),
   primary key (id),
   foreign key (pedido) references pedido(id),
-  foreign key (articulo) references articulo(codigo),
-  unique key(articulo)  
+  foreign key (articulo) references articulo(codigo)   
 );
 
 delimiter |
