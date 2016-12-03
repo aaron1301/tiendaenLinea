@@ -85,7 +85,7 @@
 
 								</table> -->								
 								
-								@if(session()->has('articulos'))								
+								@if(!$articulos->isEmpty())								
 									<a class="btn btn-default check_out" href="{{url('/finalizarCompra')}}">Finalizar Compra</a>
 								@endif									
 							</td>

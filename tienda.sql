@@ -98,7 +98,7 @@ create table carrito(
 create table pedido(  
   id int auto_increment not null,  
   usuario int not null,
-  direccion int not null,    
+  direccion varchar(50) not null,    
   `created_at` timestamp default now(),
   `updated_at` timestamp default now(),
   primary key (id),

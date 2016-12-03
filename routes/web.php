@@ -71,7 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/finalizarCompra','pedidosController@finalizarCompra');
 
-	Route::post('/realizarPago','pedidosController@finalizarPago');
+	Route::post('/realizarPago','pedidosController@realizarPago');
 
 	Route::get('/verPedidos','pedidosController@verPedidos');
 
