@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Mail;
+use App\Mail\ConfirmacionPedido;
 use App\Articulo;
 use App\Pedido;
 use App\PedidoDetalle;
@@ -38,7 +40,8 @@ class pedidosController extends Controller
         $usuario=$datos->user()->id;
         $direccion=$datos->input('direccion');
         $total=$datos->input('total');
-        $this->crearPedido($usuario,$direccion,$total);        
+        $pedido=$this->crearPedido($usuario,$direccion,$total);
+        Mail::to($datos->user())->send(new ConfirmacionPedido());        
         return view('pedidoExitoso');
     }
 
@@ -58,6 +61,7 @@ class pedidosController extends Controller
             $nuevo_pedidoDetalle->save();
             $a->delete();
         }
+        return $nuevo_pedido;
     }
 
     public function verPedidos(){
