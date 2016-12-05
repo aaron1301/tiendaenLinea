@@ -29,8 +29,8 @@
 							<span>${{$articulo->precio}}</span>
 							<label>Cantidad:</label>
 							<input type="number" name="cantidad" min="1" max="{{$inventario->cantidad}}" value="1" form="form1">
-							@if($inventario->cantidad==0)						
-							<button type="submit" class="btn btn-fefault cart" form="form1">
+							@if($inventario->cantidad<=0)						
+							<button type="submit" class="btn btn-fefault cart" form="form1" disabled>
 								<i class="fa fa-shopping-cart"></i>
 								Añadir al Carrito
 							</button>

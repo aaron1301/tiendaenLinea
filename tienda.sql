@@ -161,7 +161,7 @@ insert into inventario(id,cantidad) values(5,100);
 insert into inventario(id,cantidad) values(6,80);
 insert into inventario(id,cantidad) values(7,1);    
 
-insert into users(name,direccion,telefono,fecha_nacimiento,email,password,administrador) values("Aaron Velazquez","Por ahi",7280311,'1993-01-13',"aaron630m@gmail.com","$2y$10$kBtlyj7zO9L9iJFQgkyvY.jaCkWBrzAoCi8fmSfVa.BZ7kinRxQaG",true);
+insert into users(name,direccion,telefono,fecha_nacimiento,email,password,administrador) values("Aaron Velazquez","Costa Rica Sinaloa",7280311,'1993-01-13',"aaron630m@gmail.com","$2y$10$kBtlyj7zO9L9iJFQgkyvY.jaCkWBrzAoCi8fmSfVa.BZ7kinRxQaG",true);
 insert into users(name,direccion,telefono,fecha_nacimiento,email,password,administrador) values("César Manjarrez Admin","La Cruz Elota",1051429,'1993-06-17',"cesar63549@gmail.com","$2y$10$uJLx1tnOF5uv7opFZCiyHO7uboe1D9K6ZMshSomoJ.IXO86WkE5PG",true);
 insert into users(name,direccion,telefono,fecha_nacimiento,email,password,administrador) values("Ernesto Gutierrez","La Cruz Elota",1051429,'1993-06-17',"cesar_170693@hotmail.com","$2y$10$EnL.OZU01JbodT3qulO7qObA99bIN4RJrNtONPHYakJT6kOl7aEIK",false);
 

@@ -90,6 +90,9 @@ class articulosController extends Controller
         $articulo->costo=$datos->input('costo');
         $articulo->categoria=$datos->input('categoria');                       
         $articulo->save();
+        $inventario=Inventario::find($codigo);
+        $inventario->cantidad=$datos->input('cantidad');
+        $inventario->save();
         if($datos->file('imagen')!=null){
             $imagen = $datos->file('imagen')->StoreAs('imagenes/articulos',$articulo->codigo.'.jpg');
         }

@@ -51,17 +51,22 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('/generarCategoria','categoriasController@nuevaCategoria');
 
-	Route::post('/generarArticulosCSV','articulosController@generarArticulosCSV');
-
-	Route::post('/calificarArticulo/{codigo}','articulosController@calificarArticulo');
-
-	Route::post('/comentarArticulo/{codigo}','comentariosController@comentarArticulo');
+	Route::post('/generarArticulosCSV','articulosController@generarArticulosCSV');	
 
 	Route::get('/moderarComentarios','comentariosController@moderarComentarios');
 
 	Route::get('/moderarComentario/{id}','comentariosController@moderarComentario');
 
 	Route::post('/actualizarComentario/{id}','comentariosController@actualizarComentario');
+
+	
+});
+
+Route::group(['middleware' => 'auth'], function (){
+
+	Route::post('/calificarArticulo/{codigo}','articulosController@calificarArticulo');
+
+	Route::post('/comentarArticulo/{codigo}','comentariosController@comentarArticulo');
 
 	Route::get('/carrito','principalController@carritodeCompras');
 
@@ -81,7 +86,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/generarComprobante/{id}','pedidosController@generarComprobante');
 });
-
 
 
 

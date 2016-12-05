@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Categoria;
 use App\Articulo;
 use App\User;
+use App\Pedido;
 use Illuminate\Support\Facades\Gate;
 use DB;
 
@@ -51,8 +52,9 @@ class principalController extends Controller
 
     public function verPerfil($id){
         $usuario=User::find($id);
+        $pedidos=Pedido::where('usuario',$id)->get();
         if (Gate::allows('ver_perfil', $id)){
-           return view('perfil',compact('usuario')); 
+           return view('perfil',compact('usuario','pedidos')); 
         }else{
             return view('accesoDenegado');
         }

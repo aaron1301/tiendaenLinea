@@ -66,7 +66,7 @@ class pedidosController extends Controller
         $pedido=Pedido::find($id);
         $detalle=PedidoDetalle::where('pedido',$id)->get();        
         $pdf = PDF::loadView('comprobante', compact('pedido','detalle'));
-        return $pdf->stream('comprobante.pdf');        
+        return $pdf->stream('comprobante-'.$id.'.pdf');        
     }
 
     public function verPedidos(){
