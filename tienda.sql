@@ -122,7 +122,7 @@ delimiter |
 create trigger restarinventario after insert on pedidoDetalle
   for each row
   begin        
-    update inventario set cantidad = cantidad - 1 where new.articulo = id; 
+    update inventario set cantidad = cantidad - new.cantidad where new.articulo = id; 
   end;
 |
 delimiter ;

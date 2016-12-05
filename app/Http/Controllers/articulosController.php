@@ -126,19 +126,10 @@ class articulosController extends Controller
         
     }
 
-    public function calificarArticulo($codigo,Request $datos){
-        try{
-            $calificacion=Calificacion::where('usuario',$datos->user()->id)->where('articulo',$codigo)->firstOrFail();
-            $calificacion->valor=$datos->input('calificacion');
-            $calificacion->save();            
-        }catch(ModelNotFoundException $e){
-            $nuevo = new Calificacion;
-            $nuevo->valor=$datos->input('calificacion');
-            $nuevo->usuario=$datos->user()->id;
-            $nuevo->articulo=$codigo;
-            $nuevo->save();
-        }       
-
+    public function calificarArticulo($codigo,Request $datos){        
+        $calificacion=Calificacion::updateOrCreate(['usuario' => $datos->user()->id, 'articulo'=>$codigo],
+            ['valor'=>$datos->input('calificacion')]);
+        
         return Redirect('/articuloDetalle/'.$codigo);
     }
 }

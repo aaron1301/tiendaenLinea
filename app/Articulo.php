@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Articulo extends Model
 {
     protected $primaryKey = 'codigo';
-    protected $table = "articulo";
+    protected $table = "articulo";    
 }

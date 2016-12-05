@@ -12,15 +12,13 @@ use App\Pedido;
 use App\PedidoDetalle;
 use App\User;
 use App\Carrito;
+use PDF;
 
 class pedidosController extends Controller
 {
     public function agregaraCarrito(Request $datos){
-        $nuevo= new Carrito;
-        $nuevo->usuario=Auth::id();
-        $nuevo->articulo=$datos->input('articulo');
-        $nuevo->cantidad=$datos->input('cantidad');
-        $nuevo->save();    	    	
+        $nuevo=Carrito::updateOrCreate(['usuario'=>$datos->user()->id,'articulo'=>$datos->input('articulo')],
+            ['cantidad'=>$datos->input('cantidad')]);
     	return Redirect('/carrito');    	
     }
 
@@ -31,7 +29,7 @@ class pedidosController extends Controller
     }
 
     public function finalizarCompra(Request $datos){
-        $usuario=Auth::user();
+        $usuario=$datos->user();
         $total=$datos->input('total');
     	return view('pago',compact('usuario','total'));        
     }
@@ -41,8 +39,8 @@ class pedidosController extends Controller
         $direccion=$datos->input('direccion');
         $total=$datos->input('total');
         $pedido=$this->crearPedido($usuario,$direccion,$total);
-        Mail::to($datos->user())->send(new ConfirmacionPedido());        
-        return view('pedidoExitoso');
+        //Mail::to($datos->user())->send(new ConfirmacionPedido());        
+        return view('pedidoExitoso',compact('pedido'));
     }
 
     public function crearPedido($usuario,$direccion,$total){
@@ -62,6 +60,13 @@ class pedidosController extends Controller
             $a->delete();
         }
         return $nuevo_pedido;
+    }
+
+    public function generarComprobante($id){
+        $pedido=Pedido::find($id);
+        $detalle=PedidoDetalle::where('pedido',$id)->get();        
+        $pdf = PDF::loadView('comprobante', compact('pedido','detalle'));
+        return $pdf->stream('comprobante.pdf');        
     }
 
     public function verPedidos(){
