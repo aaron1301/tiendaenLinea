@@ -17,7 +17,7 @@
                 </div>
                 <label for="imagen" class="col-md-4 control-label">Imagen</label>
                  <div class="col-md-6">
-                    <input name="imagen" type="file" class="form-control" accept="image/jpg">                                
+                    <input name="imagen" type="file" class="form-control" accept=".jpg">                                
                 </div>
             </div>
              <div class="form-group">
