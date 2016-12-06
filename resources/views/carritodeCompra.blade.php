@@ -16,7 +16,7 @@
 							<td class="image">Articulo</td>
 							<td class="description"></td>
 							<td class="price">Precio</td>
-							<td class="quantity">Cantidad</td>
+							<td class="description">Cantidad</td>
 							<td class="total">Total</td>							
 							<td></td>
 						</tr>
@@ -37,13 +37,8 @@
 									<p>${{$a->precio}}</p>
 								</td>
 
-								<td class="cart_quantity">
-									<div class="cart_quantity_button">
-										<a class="cart_quantity_down" href=""> - </a>									
-										<input class="cart_quantity_input" type="text" name="quantity" value="{{$a->cantidad}}" autocomplete="off" size="2">
-										<a class="cart_quantity_up" href=""> + </a>
-										
-									</div>
+								<td class="cart_description">
+									<p>{{$a->cantidad}}</p>
 								</td>
 								
 								<td class="cart_total">

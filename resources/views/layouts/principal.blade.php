@@ -109,7 +109,7 @@
 				<div class="row">
 					<div class="col-sm-3">
 						<div class="companyinfo">
-							<h2><span>T</span>ienda en Linea</h2>
+							<h2><span>Tienda</span> en Linea</h2>
 							<p>Tienda en linea para que puedas realizar tus compras desde la comodidad de tu hogar a cualesquier hora.</p>
 						</div>
 					</div>

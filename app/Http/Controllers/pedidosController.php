@@ -39,32 +39,42 @@ class pedidosController extends Controller
         $direccion=$datos->input('direccion');
         $total=$datos->input('total');
         $pedido=$this->crearPedido($usuario,$direccion,$total);
-        //Mail::to($datos->user())->send(new ConfirmacionPedido());        
-        return view('pedidoExitoso',compact('pedido'));
+        //Mail::to($datos->user())->send(new ConfirmacionPedido());
+        if($pedido==null){
+            return view('error');
+        }else{
+            return view('pedidoExitoso',compact('pedido','total'));
+        }        
+        
     }
 
     public function crearPedido($usuario,$direccion,$total){
         $articulos=Carrito::where('usuario',$usuario)
         ->get();
-        $nuevo_pedido=new Pedido;
-        $nuevo_pedido->usuario=$usuario;
-        $nuevo_pedido->direccion=$direccion;
-        $nuevo_pedido->total=$total;
-        $nuevo_pedido->save();
-        foreach($articulos as $a){
-            $nuevo_pedidoDetalle=new PedidoDetalle;
-            $nuevo_pedidoDetalle->pedido=$nuevo_pedido->id;         
-            $nuevo_pedidoDetalle->articulo=$a->articulo;
-            $nuevo_pedidoDetalle->cantidad=$a->cantidad;
-            $nuevo_pedidoDetalle->save();
-            $a->delete();
+        if($articulos->isEmpty()){
+            return $nuevo_pedido=null;            
+        }else{
+            $nuevo_pedido=new Pedido;
+            $nuevo_pedido->usuario=$usuario;
+            $nuevo_pedido->direccion=$direccion;
+            $nuevo_pedido->total=$total;
+            $nuevo_pedido->save();        
+            foreach($articulos as $a){
+                $nuevo_pedidoDetalle=new PedidoDetalle;
+                $nuevo_pedidoDetalle->pedido=$nuevo_pedido->id;         
+                $nuevo_pedidoDetalle->articulo=$a->articulo;
+                $nuevo_pedidoDetalle->cantidad=$a->cantidad;
+                $nuevo_pedidoDetalle->save();
+                $a->delete();                
+            }            
         }
         return $nuevo_pedido;
     }
 
     public function generarComprobante($id){
         $pedido=Pedido::find($id);
-        $detalle=PedidoDetalle::where('pedido',$id)->get();        
+        $detalle=PedidoDetalle::join('articulo','articulo.codigo','=','articulo')
+        ->where('pedido',$id)->get();        
         $pdf = PDF::loadView('comprobante', compact('pedido','detalle'));
         return $pdf->stream('comprobante-'.$id.'.pdf');        
     }
