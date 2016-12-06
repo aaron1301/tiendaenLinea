@@ -12,6 +12,7 @@ use App\Pedido;
 use App\PedidoDetalle;
 use App\User;
 use App\Carrito;
+use App\Inventario;
 use PDF;
 
 class pedidosController extends Controller
@@ -39,10 +40,11 @@ class pedidosController extends Controller
         $direccion=$datos->input('direccion');
         $total=$datos->input('total');
         $pedido=$this->crearPedido($usuario,$direccion,$total);
-        //Mail::to($datos->user())->send(new ConfirmacionPedido());
-        if($pedido==null){
+        
+        if($pedido==null){            
             return view('error');
         }else{
+            //Mail::to($datos->user())->send(new ConfirmacionPedido());
             return view('pedidoExitoso',compact('pedido','total'));
         }        
         
@@ -51,7 +53,7 @@ class pedidosController extends Controller
     public function crearPedido($usuario,$direccion,$total){
         $articulos=Carrito::where('usuario',$usuario)
         ->get();
-        if($articulos->isEmpty()){
+        if($articulos->isEmpty()||$this->verificarInventario($articulos)==false){
             return $nuevo_pedido=null;            
         }else{
             $nuevo_pedido=new Pedido;
@@ -63,12 +65,25 @@ class pedidosController extends Controller
                 $nuevo_pedidoDetalle=new PedidoDetalle;
                 $nuevo_pedidoDetalle->pedido=$nuevo_pedido->id;         
                 $nuevo_pedidoDetalle->articulo=$a->articulo;
-                $nuevo_pedidoDetalle->cantidad=$a->cantidad;
+                $nuevo_pedidoDetalle->cantidad=$a->cantidad;                
                 $nuevo_pedidoDetalle->save();
                 $a->delete();                
             }            
         }
         return $nuevo_pedido;
+    }
+
+    public function verificarInventario($articulos){
+        foreach($articulos as $a){
+            $inventario=Inventario::find($a->articulo);
+            if($inventario->cantidad<$a->cantidad){
+                $a->delete();
+                return false;
+            }else{
+                return true;
+            }
+        }    
+
     }
 
     public function generarComprobante($id){
