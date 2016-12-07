@@ -56,7 +56,7 @@ class principalController extends Controller
         if (Gate::allows('ver_perfil', $id)){
            return view('perfil',compact('usuario','pedidos')); 
         }else{
-            return view('accesoDenegado');
+           return view('accesoDenegado');
         }
 
         
