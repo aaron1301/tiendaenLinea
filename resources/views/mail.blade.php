@@ -4,7 +4,7 @@
 	<title>Confirmacion</title>
 </head>
 <body>
-	<p>pedio</p>
+	<p>Pedio: {{pedido->id}}</p>
 
 </body>
 </html>

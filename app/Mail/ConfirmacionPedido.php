@@ -16,9 +16,10 @@ class ConfirmacionPedido extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($pedido,$detalle)
     {
-        //
+        $this->pedido=$pedido;
+        $this->detalle=$detalle;
     }
 
     /**
