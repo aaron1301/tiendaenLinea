@@ -23,7 +23,8 @@ class ConfirmacionPedido extends Mailable
     public function __construct(Pedido $pedido)
     {
         $this->pedido=$pedido;
-        $this->detalle=PedidoDetalle::where('pedido',$pedido->id)->get();
+        $this->detalle=PedidoDetalle::join('articulo','articulo.codigo','=','articulo')
+        ->where('pedido',$pedido->id)->get();
     }
 
     /**

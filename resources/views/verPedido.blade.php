@@ -4,16 +4,28 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Articulo</th>           
+            <td>Codigo </td>
+            <td>  Nombre</td>
+            <td>  Precio</td>
+            <td>  Cantidad</td>
+            <td>  Total</td>           
         </tr>
     </thead>
 
     <tbody>
         @foreach($pedidos as $p)
         <tr>
-            <td>{{$p->id}}</td>                        
-            <td>{{$p->articulo}}</td>                       
+            <tr>                
+                <td>{{$p->codigo}}</td> 
+                <td>{{$p->nombre}}</td>
+
+                <td>${{$p->precio}}</td>
+
+                <td>{{$p->cantidad}}</td>
+
+                <td>${{$p->precio*$p->cantidad}}</td>
+
+            </tr>                       
         </tr>
         @endforeach
 

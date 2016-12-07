@@ -100,8 +100,8 @@ class pedidosController extends Controller
     }
 
     public function verPedido($id){
-        $pedidos=PedidoDetalle::where('pedido',$id)
-        ->get();
+        $pedidos=PedidoDetalle::join('articulo','articulo.codigo','=','articulo')
+        ->where('pedido',$id)->get();
         return view('verPedido',compact('pedidos'));
     }
 

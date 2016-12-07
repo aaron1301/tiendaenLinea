@@ -2,9 +2,24 @@
 <html>
 <head>
 	<title>Pedido: {{$pedido->id}}</title>
+	<style>
+		table, td, th {    
+			border: 1px solid #ddd;
+			text-align: left;
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		th, td {
+			padding: 15px;
+		}
+	</style>
 </head>
 <body>
-	<h1>Pedido: {{$pedido->id}}</h1>
+	<h2>Pedido: {{$pedido->id}}</h2>
 	<p>Direccion: {{$pedido->direccion}}</p>
 	<p>Fecha: {{$pedido->created_at}}</p>
 	<table >
@@ -35,10 +50,7 @@
 			<tr>
 				<td colspan="3">&nbsp;</td>
 				<td colspan="2">
-					<table >
-						<tr>
-							<td></td>
-						</tr>
+					<table >						
 						<tr>
 							<td>Subtotal </td>
 							<td> ${{$pedido->total}}</td>
