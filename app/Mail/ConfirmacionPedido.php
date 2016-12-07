@@ -6,20 +6,24 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Pedido;
+use App\PedidoDetalle;
+
 
 class ConfirmacionPedido extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $pedido;
+    public $detalle;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($pedido,$detalle)
+    public function __construct(Pedido $pedido)
     {
         $this->pedido=$pedido;
-        $this->detalle=$detalle;
+        $this->detalle=PedidoDetalle::where('pedido',$pedido->id)->get();
     }
 
     /**

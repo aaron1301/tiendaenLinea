@@ -43,9 +43,8 @@ class pedidosController extends Controller
         
         if($pedido==null){            
             return view('error');
-        }else{
-            $detalle=PedidoDetalle::where('pedido',$pedido->id);
-            Mail::to($datos->user())->send(new ConfirmacionPedido($pedido,$detalle));
+        }else{           
+            Mail::to($datos->user())->send(new ConfirmacionPedido($pedido));
             return view('pedidoExitoso',compact('pedido','total'));
         }        
         
