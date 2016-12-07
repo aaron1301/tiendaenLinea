@@ -4,7 +4,7 @@ use tienda;
 create table categoria(
 	id int auto_increment not null,	
 	nombre varchar(50) not null,
-  descripcion varchar(500) not null,
+  descripcion varchar(1000) not null,
 	created_at timestamp default now(),
 	updated_at timestamp default now(),
 	primary key(id)	
@@ -14,7 +14,7 @@ create table articulo(
 	codigo int auto_increment not null,
 	nombre varchar(50) not null,
 	precio decimal(10,2) not null,	
-	descripcion varchar(500),
+	descripcion varchar(1000),
 	costo decimal(10,2) not null,
 	categoria int not null,
 	created_at timestamp default now(),
