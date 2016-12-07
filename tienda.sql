@@ -144,8 +144,7 @@ No necesitas estar revisando la hora o tus mensajes constantemente, las notifica
 insert into articulo(nombre,descripcion,precio,costo,categoria) values("Galaxy S7",
 "El Nuevo Galaxy S7, con numerosas innovaciones en sus funciones, hace que su uso sea más fácil y enriquecido. 
 Con el diseño de cristal y metal como el Galaxy S6 pero con un perfecto agarre, hace del galaxy S7 el mejor Smartphone del mercado.
-Con el certificado IP68 contra polvo y agua, podrás estar en la lluvia sin preocupación, con su batería de larga duración y carga ultrrápida estarás siempre conectado sin perder ningún detalle.
-Para esos momentos inolvidables, Galaxy S7 te brinda una cámara de 12 dual mpx con un lente con mayor apertura (F1.7), con estabilizador óptico de imagen (OIS) y su rápido auto focus que te permitirán tener fotos más nítidas y brillantes en ambientes de poca luz o incluso con movimiento."  
+Con el certificado IP68 contra polvo y agua, podrás estar en la lluvia sin preocupación, con su batería de larga duración y carga ultrrápida estarás siempre conectado sin perder ningún detalle."
 ,15479,14000,1);
 insert into articulo(nombre,precio,costo,categoria) values("Samsung Galaxy Tab S",6500,6000,3);
 insert into articulo(nombre,precio,costo,categoria) values("Asus Z580C-B1-BK",3900,2500,3);
